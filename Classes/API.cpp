@@ -36,7 +36,9 @@ void API::request(std::string url,HttpRequest::Type type){
     request->setUrl(url.c_str());
     request->setRequestType(type);
     request->setResponseCallback([this](HttpClient* client, HttpResponse* response){
-        this->receiveReuest(response);
+        char* strRpns = convertToChar(response);
+        
+        this->receiveRequest(strRpns);
     });
     request->setTag("request test1");
     HttpClient::getInstance()->send(request);
@@ -44,11 +46,12 @@ void API::request(std::string url,HttpRequest::Type type){
 }
 
 
-void API::receiveReuest(HttpResponse* response){
+void API::receiveRequest(char* response){
     MyHandler handler;
     Reader reader;
-    StringStream ss(convertToChar(response));
+    StringStream ss(response);
     reader.Parse(ss, handler);
+    
 }
 
 

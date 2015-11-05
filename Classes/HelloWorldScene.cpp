@@ -77,8 +77,8 @@ bool HelloWorld::init()
     API *api = new API();
     std::string url = "http://10.135.176.39:3000/api/yw_user/getAll";
     api->request(url.c_str(), HttpRequest::Type::GET);
-    url = "http://10.135.176.39:3000/api/yw_user/insert?id=14&name=name14";
-    api->request(url.c_str(), HttpRequest::Type::POST);
+//    url = "http://10.135.176.39:3000/api/yw_user/insert?id=14&name=name14";
+//    api->request(url.c_str(), HttpRequest::Type::POST);
 
     
     

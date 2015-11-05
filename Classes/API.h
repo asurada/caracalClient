@@ -27,33 +27,15 @@ using namespace std;
 class API
 {
     private:
-    //    std::string _url;
-    //    cocos2d::network::WebSocket* _websocket;
-        void receiveReuest(HttpResponse* response);
+
+        void receiveRequest(char* response);
 
     public:
-    //    std::function<void(std::string message)> onMessageReceived;
-    //    std::function<void()> onConnectionClosed;
-    //    std::function<void(const cocos2d::network::WebSocket::ErrorCode &error)> onErrorOccurred;
-    //    std::function<void()> onConnectionOpened;
-    //
-    //    API(std::string url);
-    //
-    //    void connect();
-    //
-    //    static SWebSocket* create(std::string url);
-    //
-    //    virtual void onOpen(cocos2d::network::WebSocket* ws);
-    //    virtual void onMessage(cocos2d::network::WebSocket* ws, const cocos2d::network::WebSocket::Data& data);
-    //    virtual void onError(cocos2d::network::WebSocket* ws, const cocos2d::network::WebSocket::ErrorCode& error);
-    //    virtual void onClose(cocos2d::network::WebSocket* ws);
-    //    void close();
-    //    void send(std::string message);
-    
-          void request(std::string url,HttpRequest::Type type);
-          void parseData(HttpResponse* response);
-          char* convertToChar(HttpResponse* response);
-          ~API();
+
+        void request(std::string url,HttpRequest::Type type);
+        void parseData(HttpResponse* response);
+        char* convertToChar(HttpResponse* response);
+        ~API();
 };
 
 
