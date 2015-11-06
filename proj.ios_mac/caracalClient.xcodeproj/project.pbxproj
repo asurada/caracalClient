@@ -58,6 +58,8 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		A21787DE1BE9FE6C001A0050 /* API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A21787DC1BE9FE6C001A0050 /* API.cpp */; };
+		A2DD09E31BEC92370048B722 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DD09E11BEC92370048B722 /* Socket.cpp */; };
+		A2DD09E61BEC92D80048B722 /* SocketTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DD09E41BEC92D80048B722 /* SocketTestScene.cpp */; };
 		A2E162541BE9F6E600CF27CA /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -151,6 +153,10 @@
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A21787DC1BE9FE6C001A0050 /* API.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = API.cpp; sourceTree = "<group>"; };
 		A21787DD1BE9FE6C001A0050 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
+		A2DD09E11BEC92370048B722 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
+		A2DD09E21BEC92370048B722 /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
+		A2DD09E41BEC92D80048B722 /* SocketTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketTestScene.cpp; sourceTree = "<group>"; };
+		A2DD09E51BEC92D80048B722 /* SocketTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SocketTestScene.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -293,6 +299,10 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A2DD09E41BEC92D80048B722 /* SocketTestScene.cpp */,
+				A2DD09E51BEC92D80048B722 /* SocketTestScene.h */,
+				A2DD09E11BEC92370048B722 /* Socket.cpp */,
+				A2DD09E21BEC92370048B722 /* Socket.h */,
 				A21787DC1BE9FE6C001A0050 /* API.cpp */,
 				A21787DD1BE9FE6C001A0050 /* API.h */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
@@ -472,7 +482,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A21787DE1BE9FE6C001A0050 /* API.cpp in Sources */,
+				A2DD09E31BEC92370048B722 /* Socket.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				A2DD09E61BEC92D80048B722 /* SocketTestScene.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,

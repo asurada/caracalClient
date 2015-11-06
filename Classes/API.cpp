@@ -56,8 +56,8 @@ void API::receiveRequest(char* response){
 
 
 void API::parseData(HttpResponse* response){
-//    Document document;
-//    document.Parse(convertToChar(response));
+//   Document document;
+//   document.Parse(convertToChar(response));
 }
 
 
