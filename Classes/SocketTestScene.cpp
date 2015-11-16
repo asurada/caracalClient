@@ -40,13 +40,13 @@ bool SocketTest::init()
     // 略
     editBox = TextField::create("please input text" , "arial" , 40);
     editBox->setContentSize(Size(240 , 50));
-    editBox->setPosition(Point(240 / 2 , 30));
+    editBox->setPosition(Point(300 / 2 , 60));
     editBox->addEventListener(CC_CALLBACK_2(SocketTest::textFieldEvent, this));
     this->addChild(editBox);
     // ここでsocket.io connection開始。clientを持っておく
-    _client = SocketIO::connect("http://10.135.176.39:3000", *this);
+    _client = SocketIO::connect("http://10.135.176.39:3000/", *this);
 
-    _client->on("chat message", CC_CALLBACK_2(SocketTest::onReceiveEvent, this));
+    _client->on("chat", CC_CALLBACK_2(SocketTest::onReceiveEvent, this));
     return true;
 }
 
@@ -98,8 +98,10 @@ void SocketTest::textFieldEvent(Ref *pSender, TextField::EventType type)
             // IMEが閉じた時
         case TextField::EventType::DETACH_WITH_IME:
            text = (TextField*)pSender;
-           sendText = "[{\"value\":\"" + text->getStringValue() + "\"}]";
-           _client->emit("chat message",sendText);
+         //  _client->send("Hello Socket.IO!");
+           sendText = "[{\"chat\":\"" + text->getStringValue() + "\"}]";
+           _client->emit("chat", text->getStringValue());
+            text->setString("");
            // _client->send("chat testes");
            // addTalkPlayer(text->getStringValue());
             break;
@@ -134,7 +136,7 @@ void SocketTest::addTalkPlayer(const std::string& str){
     this->addChild(draw);
     draw->drawPolygon(points, 4, Color4F(0 , 0.5, 0, 1), 1, Color4F(0,0,1,1));
     
-    auto text = Text::create(str, "arial", 40);
+    auto text = Text::create(str, "arial", 30);
     text->setTextHorizontalAlignment(TextHAlignment::RIGHT);
     text->setAnchorPoint(Point(1.0 , 1.0));
     text->setPosition(Point(originalX , originalY));
