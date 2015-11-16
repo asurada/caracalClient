@@ -80,7 +80,9 @@ void SocketTest::onReceiveEvent(SIOClient* client , const std::string& data){
 //    doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
 //    rapidjson::Value &val = doc["args"];
     std::string value =data.c_str();// val[rapidjson::SizeType(0)]["value"].GetString();
-    addTalkOther(value);
+    
+    log("%s",value.c_str());
+  //  addTalkOther(value);
 };
 
 //------------------------------------------------------
@@ -101,8 +103,9 @@ void SocketTest::textFieldEvent(Ref *pSender, TextField::EventType type)
          //  _client->send("Hello Socket.IO!");
            sendText = "[{\"chat\":\"" + text->getStringValue() + "\"}]";
            _client->emit("chat", text->getStringValue());
-            text->setString("");
-           // _client->send("chat testes");
+           text->setString("");
+            threadOperation();
+            // _client->send("chat testes");
            // addTalkPlayer(text->getStringValue());
             break;
         default:
@@ -182,11 +185,55 @@ void SocketTest::addTalkOther(const std::string& str){
         text->setPosition(Point(text->getPosition().x,text->getPosition().y-10));
     }
     _array.pushBack(text);
+    if(+_array.size() > 30){
+      _array.erase(_array.begin()+30, _array.begin()+_array.size());
+    }
+    
    
     this->addChild(text);
     index++;
 }
 
+
+std::mutex mtx;
+void SocketTest::threadOperation(){
+    // 別スレッドを生成して引数を渡して実行する
+    auto t = std::thread([this] (int n) {
+//        mtx.lock();
+//        std::count << "thread is: " << std::this_thread::get_id() << std::endl;
+//        mtx.unlock();
+        
+        for (int i = 0; i < 10000; i++) {
+            mtx.lock();
+            std::stringstream ss;
+            ss << i;
+            _client->emit("chat", ss.str());
+            log("%d", n + i);
+            mtx.unlock();
+        }
+        
+        // 処理が一通り終わったのでメインスレッドに戻してメソッドを呼ぶ
+        auto scheduler = Director::getInstance()->getScheduler();
+        scheduler->performFunctionInCocosThread(CC_CALLBACK_0(SocketTest::dispatchThreadCallbacks, this));
+    }, 1000);
+    
+    // スレッドの管理を手放す
+    // スレッドの処理を待つ場合はt.join()かstd::asyncを使う
+    t.detach();
+    
+    // メインスレッドのThread Idを出力
+    // 共有リソースを使うのでlock (これがなければ別スレッドに出力を割り込まれる)
+//    mtx.lock();
+//    std::cout << "thread is: " << std::this_thread::get_id() << std::endl;
+//    mtx.unlock();
+}
+
+void SocketTest::dispatchThreadCallbacks()
+{
+    // std::lock_guardはunlockをスコープから抜ける時に自動的にやってくれる
+   // std::lock_guard<std::mutex> lock(mtx);
+   // std::cout << "thread is: " << std::this_thread::get_id() << std::endl;
+}
 
 void SocketTest::menuCloseCallback(Ref* pSender){ // 略
 }

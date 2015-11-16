@@ -46,7 +46,8 @@ public:
     void textFieldEvent(Ref *pSender, TextField::EventType type);
     void addTalkPlayer(const std::string& str);
     void addTalkOther(const std::string& str);
-    
+    void threadOperation();
+    void dispatchThreadCallbacks();
     
     virtual bool init();
     
