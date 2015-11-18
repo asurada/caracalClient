@@ -117,7 +117,9 @@ void GameScene::tick(float delta){
             float rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
             std::string  pos =  StringUtils::format("(x,y):(%f,%f)",newPosition.x,newPosition.y); //CCString::createWithFormat("(x:y):%f,%f",newPosition.x,newPosition.y);
             std::string sendText = "[{\"p\":\"" + pos + "\"},{\"r\":\"" + std::to_string(rotation) + "\"}]";
-            _client->emit("chat",  sendText);
+            _outputQuene.pushBack(sendText);
+            _client->emit("chat",  _outputQuene.front());
+            _outputQuene.erase(_outputQuene.begin());
             
             sprite->setPosition(newPosition);
             sprite->setRotation(rotation);
@@ -157,6 +159,7 @@ void GameScene::onReceiveEvent(SIOClient* client , const std::string& data){
     //    doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
     //    rapidjson::Value &val = doc["args"];
     std::string value =data.c_str();// val[rapidjson::SizeType(0)]["value"].GetString();
+    _outputQuene.pushBack(value);
     log("%s",value.c_str());
 
 };

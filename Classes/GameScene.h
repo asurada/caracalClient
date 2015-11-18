@@ -25,8 +25,10 @@ private:
     b2Body *_groundBody;
     b2Fixture *_bottomFixture;
     b2Fixture *_ballFixture;
-    
     SIOClient* _client;
+    
+    cocos2d::Vector<std::string> _inputQuene;
+    cocos2d::Vector<std::string> _outputQuene;
     
     void initEnv();
     void initBall();
