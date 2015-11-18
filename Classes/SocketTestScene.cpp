@@ -82,7 +82,7 @@ void SocketTest::onReceiveEvent(SIOClient* client , const std::string& data){
     std::string value =data.c_str();// val[rapidjson::SizeType(0)]["value"].GetString();
     
     log("%s",value.c_str());
-  //  addTalkOther(value);
+    addTalkOther(value);
 };
 
 //------------------------------------------------------
@@ -104,7 +104,7 @@ void SocketTest::textFieldEvent(Ref *pSender, TextField::EventType type)
            sendText = "[{\"chat\":\"" + text->getStringValue() + "\"}]";
            _client->emit("chat", text->getStringValue());
            text->setString("");
-            threadOperation();
+          // threadOperation();
             // _client->send("chat testes");
            // addTalkPlayer(text->getStringValue());
             break;
@@ -189,7 +189,6 @@ void SocketTest::addTalkOther(const std::string& str){
       _array.erase(_array.begin()+30, _array.begin()+_array.size());
     }
     
-   
     this->addChild(text);
     index++;
 }

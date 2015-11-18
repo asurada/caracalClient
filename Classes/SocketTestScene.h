@@ -10,7 +10,6 @@
 #define ____SocketTestScene__
 
 #include <stdio.h>
-
 #include "cocos2d.h"
 #include <SocketIO.h>
 #include "ui/cocosGUI.h"
