@@ -10,6 +10,7 @@
 #include "json/document.h"
 #include "GameScene.h"
 USING_NS_CC;
+#define mark
 
 Scene* GameScene::createScene(){
     // 'scene' is an autorelease object
@@ -31,12 +32,14 @@ bool GameScene::init()
     
     initEnv();
     initBall();
-    
     _client = SocketIO::connect("http://10.135.176.39:3000/", *this);
     _client->on("chat", CC_CALLBACK_2(GameScene::onReceiveEvent, this));
-    
-    
+    _client->on("JSON", CC_CALLBACK_2(GameScene::onReceiveJSONEvent, this));
     this->schedule(schedule_selector(GameScene::tick));
+    this->schedule(schedule_selector(GameScene::outputQueueUpdate),(1.0/60.0f));
+    this->schedule(schedule_selector(GameScene::inputQueueUpdate),(1.0/60.0f));
+    
+    
     return true;
 }
 
@@ -100,7 +103,7 @@ void GameScene::initBall(){
     ballShapeDef.restitution = 1.0f;
     _ballFixture = ballBody->CreateFixture(&ballShapeDef);
     
-    b2Vec2 force = b2Vec2(100, 100);
+    b2Vec2 force = b2Vec2(10, 100);
     ballBody->ApplyLinearImpulse(ballBodyDef.position, force, true);
     
 }
@@ -115,11 +118,11 @@ void GameScene::tick(float delta){
                                       b->GetPosition().y * PTM_RATIO);
          
             float rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
-            std::string  pos =  StringUtils::format("(x,y):(%f,%f)",newPosition.x,newPosition.y); //CCString::createWithFormat("(x:y):%f,%f",newPosition.x,newPosition.y);
-            std::string sendText = "[{\"p\":\"" + pos + "\"},{\"r\":\"" + std::to_string(rotation) + "\"}]";
-            _outputQuene.pushBack(sendText);
-            _client->emit("chat",  _outputQuene.front());
-            _outputQuene.erase(_outputQuene.begin());
+            std::string  pos =  StringUtils::format("(%f,%f)",newPosition.x,newPosition.y); //CCString::createWithFormat("(x:y):%f,%f",newPosition.x,newPosition.y);
+            std::string sendText = "[{\"(x,y)\":\"" + pos + "\"},{\"r\":\"" + std::to_string(rotation) + "\"}]";
+            //_outputQuene.pushBack(sendText);
+            _outputQuene.push_back(sendText);
+          
             
             sprite->setPosition(newPosition);
             sprite->setRotation(rotation);
@@ -137,7 +140,7 @@ void GameScene::onConnect(SIOClient* client){
 
 void GameScene::onMessage(SIOClient* client, const std::string& data){
     // SocketIO::send receive
-    log("onMessage");
+    //log("onMessage");
 }
 
 void GameScene::onClose(SIOClient* client){
@@ -148,6 +151,8 @@ void GameScene::onClose(SIOClient* client){
 void GameScene::onError(SIOClient* client, const std::string& data){
     // SocketIO::failed
     log("onError");
+    _client->disconnect();
+    _client = SocketIO::connect("http://10.135.176.39:3000/", *this);
 }
 
 /**
@@ -155,13 +160,71 @@ void GameScene::onError(SIOClient* client, const std::string& data){
  */
 void GameScene::onReceiveEvent(SIOClient* client , const std::string& data){
     
-    //    rapidjson::Document doc;
-    //    doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
-    //    rapidjson::Value &val = doc["args"];
-    std::string value =data.c_str();// val[rapidjson::SizeType(0)]["value"].GetString();
-    _outputQuene.pushBack(value);
+    std::string value =data.c_str();
     log("%s",value.c_str());
 
 };
 
+void GameScene::onReceiveJSONEvent(SIOClient* client , const std::string& data){
+    
+//    rapidjson::Document doc;
+//    doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
+//    rapidjson::Value &val = doc["(x,y)"];
+   // log("%s",val);
+    std::string value =data.c_str();
+    // val[rapidjson::SizeType(0)]["value"].GetString();
+    _inputQuene.push_back(value);
+    // log("%s",value.c_str());
+    
+};
 
+
+void GameScene::outputQueueUpdate(float delta){
+    auto t = std::thread([this] (int n) {
+        
+        if(_outputQuene.size() > 0){
+            mtx.lock();
+            _client->emit("JSON",  _outputQuene.front());
+            _outputQuene.erase(_outputQuene.begin());
+            mtx.unlock();
+        }
+        auto scheduler = Director::getInstance()->getScheduler();
+        scheduler->performFunctionInCocosThread(CC_CALLBACK_0(GameScene::dispatchThreadCallbacks, this));
+    }, -1);
+    
+    // スレッドの管理を手放す
+    // スレッドの処理を待つ場合はt.join()かstd::asyncを使う
+    t.detach();
+}
+
+
+
+void GameScene::inputQueueUpdate(float delta){
+    auto t = std::thread([this] (int n) {
+        
+        if(_inputQuene.size() > 0){
+            mtx.lock();
+            std::string str = (std::string)_inputQuene.front();
+            log("receive:%s",str.c_str());
+            _inputQuene.erase(_inputQuene.begin());
+            mtx.unlock();
+        }
+        auto scheduler = Director::getInstance()->getScheduler();
+        scheduler->performFunctionInCocosThread(CC_CALLBACK_0(GameScene::dispatchThreadCallbacks, this));
+    }, -1);
+    
+    // スレッドの管理を手放す
+    // スレッドの処理を待つ場合はt.join()かstd::asyncを使う
+    t.detach();
+}
+
+
+
+
+void GameScene::dispatchThreadCallbacks()
+{
+    // log("dispatchThreadCallbacks");
+    // std::lock_guardはunlockをスコープから抜ける時に自動的にやってくれる
+    // std::lock_guard<std::mutex> lock(mtx);
+    // std::cout << "thread is: " << std::this_thread::get_id() << std::endl;
+}

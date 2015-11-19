@@ -26,22 +26,26 @@ private:
     b2Fixture *_bottomFixture;
     b2Fixture *_ballFixture;
     SIOClient* _client;
-    
-    cocos2d::Vector<std::string> _inputQuene;
-    cocos2d::Vector<std::string> _outputQuene;
+    std::mutex mtx;
+    std::vector<std::string> _inputQuene;
+    std::vector<std::string> _outputQuene;
     
     void initEnv();
     void initBall();
     void tick(float delta);
+    void outputQueueUpdate(float delta);
+    void inputQueueUpdate(float delta);
     
     // socket.io eventのevent listener
     void onReceiveEvent(SIOClient* client , const std::string& data);
+    void onReceiveJSONEvent(SIOClient* client , const std::string& data);
     
     // SIODelegate
     virtual void onConnect(SIOClient* client);
     virtual void onMessage(SIOClient* client, const std::string& data);
     virtual void onClose(SIOClient* client);
     virtual void onError(SIOClient* client, const std::string& data);
+    void dispatchThreadCallbacks();
     
 public:
     static cocos2d::Scene* createScene();
