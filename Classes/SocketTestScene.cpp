@@ -19,6 +19,8 @@ const static int TEXT_H = 10;
 
 Scene* SocketTest::createScene()
 {
+    
+    
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
@@ -152,7 +154,7 @@ void SocketTest::addTalkPlayer(const std::string& str){
  * その他UI
  */
 void SocketTest::addTalkOther(const std::string& str){
-    Size size = Director::getInstance()->getVisibleSize();
+    //Size size = Director::getInstance()->getVisibleSize();
     
     DrawNode* draw = DrawNode::create();
     
