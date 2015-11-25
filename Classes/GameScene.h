@@ -35,6 +35,7 @@ private:
     void tick(float delta);
     void outputQueueUpdate(float delta);
     void inputQueueUpdate(float delta);
+    void outputParseUpdate(float delta);
     
     // socket.io eventのevent listener
     void onReceiveEvent(SIOClient* client , const std::string& data);

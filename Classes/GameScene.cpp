@@ -40,8 +40,8 @@ bool GameScene::init()
     _client->on("chat", CC_CALLBACK_2(GameScene::onReceiveEvent, this));
     _client->on("JSON", CC_CALLBACK_2(GameScene::onReceiveJSONEvent, this));
     this->schedule(schedule_selector(GameScene::tick));
-    this->schedule(schedule_selector(GameScene::outputQueueUpdate),(1.0/30.0f));
-    this->schedule(schedule_selector(GameScene::inputQueueUpdate),(1.0/30.0f));
+    this->schedule(schedule_selector(GameScene::outputQueueUpdate),(1.0/60.0f));
+    this->schedule(schedule_selector(GameScene::inputQueueUpdate),(1.0/60.0f));
     
     
     return true;
@@ -84,7 +84,7 @@ void GameScene::initEnv(){
 void GameScene::initBall(){
     
     Sprite *ball = Sprite::create("ball-hd.png"); //[CCSprite spriteWithFile:@"ball.png"];
-    ball->setPosition(Point(100, 100));
+    ball->setPosition(Point(100, 200));
     ball->setTag(1);
     this->addChild(ball);
     
@@ -122,35 +122,34 @@ void GameScene::tick(float delta){
                                       b->GetPosition().y * PTM_RATIO);
          
             float rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
-            std::string  pos =  StringUtils::format("(%f,%f)",newPosition.x,newPosition.y); //CCString::createWithFormat("(x:y):%f,%f",newPosition.x,newPosition.y);
-            //std::string sendText = "[{\"(x,y)\":\"" + pos + "\"},{\"r\":\"" + std::to_string(rotation) + "\"}]";
-            //std::string sendText = "{\"pos\":\"" + pos + "\"}";
-            std::string sendText  = "{\"hello\" : \"word\"}";
-            //_outputQuene.pushBack(sendText);
+            std::string  pos =  StringUtils::format("(%f,%f)",newPosition.x,newPosition.y);
+   
             
             rapidjson::Document document;
             document.SetObject();
             rapidjson::Document::AllocatorType& allocator = document.GetAllocator();
             rapidjson::Value array(rapidjson::kArrayType);
+            rapidjson::Value x(rapidjson::kObjectType);
+            rapidjson::Value y(rapidjson::kObjectType);
+            rapidjson::Value r(rapidjson::kObjectType);
             rapidjson::Value object(rapidjson::kObjectType);
-            object.AddMember("int", 1, allocator);
-            object.AddMember("double", 1.0, allocator);
-            object.AddMember("bool", true, allocator);
-            object.AddMember("hello", "你好", allocator);
-            array.PushBack(object, allocator);
             
-            document.AddMember("json", "json string", allocator);
-            document.AddMember("array", array, allocator);
+            document.AddMember("jsonrpc", 2, allocator);
+            document.AddMember("method", "move", allocator);
+            x.AddMember("x",newPosition.x, allocator);
+            array.PushBack(x, allocator);
+            y.AddMember("y", newPosition.y, allocator);
+            array.PushBack(y, allocator);
+            r.AddMember("r", rotation, allocator);
+            array.PushBack(r, allocator);
+            document.AddMember("params", array, allocator);
+           
 
             StringBuffer buffer;
             Writer<StringBuffer> writer(buffer);
             document.Accept(writer);
             
             CCLOG("%s",buffer.GetString());
-            
-            
-         
-            
             
             _outputQuene.push_back(buffer.GetString());
           
@@ -194,22 +193,31 @@ void GameScene::onReceiveEvent(SIOClient* client , const std::string& data){
 };
 
 void GameScene::onReceiveJSONEvent(SIOClient* client , const std::string& data){
-    
-    rapidjson::Document doc;
-    const std::string str ="{\"hello\" : \"word\"}";
-    printf("hello = %s",str.c_str());
-    printf("data = %s",data.c_str());
-    //doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
-    doc.Parse<rapidjson::kParseDefaultFlags>(str.c_str());
-    printf("pi = %s\n", doc["hello"].GetString());
-    //rapidjson::Value &val = doc["(x,y)"];
-   // log("%s",val);
+    mtx.lock();
     std::string value = data.c_str();
-    // val[rapidjson::SizeType(0)]["value"].GetString();
     _inputQuene.push_back(value);
-    // log("%s",value.c_str());
-    
+    mtx.unlock();
 };
+
+void parse(const std::string& data){
+    rapidjson::Document doc;
+    doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
+    if(doc["params"].IsArray()){
+        for (SizeType i = 0; i < doc["params"].Size(); i++){
+            if(doc["params"][i].HasMember("x")){
+                printf("x = %f\n", doc["params"][i]["x"].GetDouble());
+            }else if(doc["params"][i].HasMember("y")){
+                printf("y = %f\n", doc["params"][i]["y"].GetDouble());
+            }else if(doc["params"][i].HasMember("r")){
+                printf("r = %f\n", doc["params"][i]["r"].GetDouble());
+            }
+        }
+    }
+ 
+}
+
+
+
 
 
 
@@ -235,10 +243,9 @@ void GameScene::outputQueueUpdate(float delta){
 
 void GameScene::inputQueueUpdate(float delta){
     auto t = std::thread([this] (int n) {
-        
         if(_inputQuene.size() > 0){
             mtx.lock();
-            std::string str = (std::string)_inputQuene.front();
+            parse(_inputQuene.front());
             _inputQuene.erase(_inputQuene.begin());
             mtx.unlock();
         }
