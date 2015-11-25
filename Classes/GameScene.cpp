@@ -84,14 +84,16 @@ void GameScene::initEnv(){
 void GameScene::initBall(){
     
     Sprite *ball = Sprite::create("ball-hd.png"); //[CCSprite spriteWithFile:@"ball.png"];
+    goast = Sprite::create("ball.png");
     ball->setPosition(Point(100, 200));
     ball->setTag(1);
     this->addChild(ball);
+    this->addChild(goast);
     
     
     b2BodyDef ballBodyDef;
     ballBodyDef.type = b2_dynamicBody;
-    ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+    ballBodyDef.position.Set(100/PTM_RATIO, 200/PTM_RATIO);
     ballBodyDef.userData = ball;
     b2Body * ballBody = _world->CreateBody(&ballBodyDef);
     
@@ -124,7 +126,7 @@ void GameScene::tick(float delta){
             float rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
             std::string  pos =  StringUtils::format("(%f,%f)",newPosition.x,newPosition.y);
    
-            
+            log("%f,%f",newPosition.x,newPosition.y);
             rapidjson::Document document;
             document.SetObject();
             rapidjson::Document::AllocatorType& allocator = document.GetAllocator();
@@ -199,17 +201,27 @@ void GameScene::onReceiveJSONEvent(SIOClient* client , const std::string& data){
     mtx.unlock();
 };
 
-void parse(const std::string& data){
+void GameScene::parse(const std::string& data){
     rapidjson::Document doc;
     doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
+    float x,y,r;
     if(doc["params"].IsArray()){
+        Sprite *smallBall;
         for (SizeType i = 0; i < doc["params"].Size(); i++){
             if(doc["params"][i].HasMember("x")){
-                printf("x = %f\n", doc["params"][i]["x"].GetDouble());
+               // goast = Sprite::create("ball.png");
+                x = doc["params"][i]["x"].GetDouble();
+                printf("x = %f\n", x);
             }else if(doc["params"][i].HasMember("y")){
-                printf("y = %f\n", doc["params"][i]["y"].GetDouble());
+                y = doc["params"][i]["y"].GetDouble();
+                goast->setPosition(Point(x,y));
+                printf("y = %f\n", y);
+                
             }else if(doc["params"][i].HasMember("r")){
-                printf("r = %f\n", doc["params"][i]["r"].GetDouble());
+                r = doc["params"][i]["r"].GetDouble();
+                goast->setRotation(r);
+               // this->addChild(smallBall);
+                printf("r = %f\n", r);
             }
         }
     }

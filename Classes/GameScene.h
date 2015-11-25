@@ -29,6 +29,7 @@ private:
     std::mutex mtx;
     std::vector<std::string> _inputQuene;
     std::vector<std::string> _outputQuene;
+    cocos2d::Sprite *goast;
     
     void initEnv();
     void initBall();
@@ -36,7 +37,7 @@ private:
     void outputQueueUpdate(float delta);
     void inputQueueUpdate(float delta);
     void outputParseUpdate(float delta);
-    
+    void parse(const std::string& data);
     // socket.io eventのevent listener
     void onReceiveEvent(SIOClient* client , const std::string& data);
     void onReceiveJSONEvent(SIOClient* client , const std::string& data);
