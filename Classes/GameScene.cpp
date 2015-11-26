@@ -212,12 +212,14 @@ void GameScene::parse(const std::string& data){
                // goast = Sprite::create("ball.png");
                 x = doc["params"][i]["x"].GetDouble();
                 printf("x = %f\n", x);
-            }else if(doc["params"][i].HasMember("y")){
+            }
+            if(doc["params"][i].HasMember("y")){
                 y = doc["params"][i]["y"].GetDouble();
                 goast->setPosition(Point(x,y));
                 printf("y = %f\n", y);
                 
-            }else if(doc["params"][i].HasMember("r")){
+            }
+            if(doc["params"][i].HasMember("r")){
                 r = doc["params"][i]["r"].GetDouble();
                 goast->setRotation(r);
                // this->addChild(smallBall);
