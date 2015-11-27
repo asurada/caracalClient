@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
+#include "json/stringbuffer.h"
 #include <SocketIO.h>
 
 #define PTM_RATIO 32.0
@@ -41,7 +42,10 @@ private:
     // socket.io eventのevent listener
     void onReceiveEvent(SIOClient* client , const std::string& data);
     void onReceiveJSONEvent(SIOClient* client , const std::string& data);
+    void onReceiveStateEvent(SIOClient* client , const std::string& data);
     
+    rapidjson::StringBuffer makeJsonCommand(const char* method, const char* param);
+    rapidjson::StringBuffer makeJsonPosition() const;
     // SIODelegate
     virtual void onConnect(SIOClient* client);
     virtual void onMessage(SIOClient* client, const std::string& data);
