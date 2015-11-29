@@ -36,7 +36,9 @@ bool GameScene::init()
     
     initEnv();
     initBall();
-    _client = SocketIO::connect("http://10.135.176.39:3000/", *this);
+    //_client = SocketIO::connect("http://10.135.176.39:3000/", *this);
+    _client = SocketIO::connect("http://192.168.179.7:3000/", *this);
+ 
     _client->on("chat", CC_CALLBACK_2(GameScene::onReceiveEvent, this));
     _client->on("JSON", CC_CALLBACK_2(GameScene::onReceiveJSONEvent, this));
     _client->on("state", CC_CALLBACK_2(GameScene::onReceiveStateEvent, this));
