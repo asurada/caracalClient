@@ -14,6 +14,9 @@
 USING_NS_CC;
 #define mark
 
+#define RETRY_COUNT (100)
+#define URL "http://10.135.176.39:3000/" //http://192.168.179.7:3000/
+
 using namespace  rapidjson;
 
 Scene* GameScene::createScene(){
@@ -33,11 +36,10 @@ Scene* GameScene::createScene(){
 
 bool GameScene::init()
 {
-    
+    errorCount = 0;
     initEnv();
     initBall();
-    //_client = SocketIO::connect("http://10.135.176.39:3000/", *this);
-    _client = SocketIO::connect("http://192.168.179.7:3000/", *this);
+    _client = SocketIO::connect(URL, *this);
  
     _client->on("chat", CC_CALLBACK_2(GameScene::onReceiveEvent, this));
     _client->on("JSON", CC_CALLBACK_2(GameScene::onReceiveJSONEvent, this));
@@ -136,7 +138,7 @@ void GameScene::tick(float delta){
             rapidjson::Document document;
             document.SetObject();
             rapidjson::Document::AllocatorType& allocator = document.GetAllocator();
-            rapidjson::Value param(rapidjson::kArrayType);
+            rapidjson::Value param(rapidjson::kObjectType);
             rapidjson::Value x(rapidjson::kObjectType);
             rapidjson::Value y(rapidjson::kObjectType);
             rapidjson::Value r(rapidjson::kObjectType);
@@ -170,7 +172,7 @@ void GameScene::tick(float delta){
 
 void GameScene::onConnect(SIOClient* client){
     // SocketIO::connect success
-
+    errorCount = 0;
     log("connect success");
 }
 
@@ -180,12 +182,18 @@ void GameScene::onMessage(SIOClient* client, const std::string& data){
 }
 
 void GameScene::onClose(SIOClient* client){
-    // SocketIO::disconnect success
+    //SocketIO::disconnect success
+    
+    errorCount = 0;
     log("onClose");
 }
 
 void GameScene::onError(SIOClient* client, const std::string& data){
     // SocketIO::failed
+    errorCount++;
+    if(errorCount < RETRY_COUNT){
+       _client = SocketIO::connect("http://10.135.176.39:3000/", *this);
+    }
     log("onError");
 }
 
@@ -195,7 +203,6 @@ void GameScene::onError(SIOClient* client, const std::string& data){
 void GameScene::onReceiveEvent(SIOClient* client , const std::string& data){
     
     std::string value =data.c_str();
-    log("%s",value.c_str());
     _client->emit("state", makeJsonCommand("ready", "").GetString());
     
 };
@@ -205,7 +212,7 @@ void GameScene::onReceiveStateEvent(SIOClient* client , const std::string& data)
     doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
     std::string method = doc["method"].GetString();
     if(method == "start"){
-        this->schedule(schedule_selector(GameScene::tick));
+        //this->schedule(schedule_selector(GameScene::tick));
     }
 }
 

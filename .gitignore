@@ -20,3 +20,5 @@ proj.ios_mac/caracalClient.xcodeproj/xcuserdata/JP116018.xcuserdatad/xcdebugger/
 proj.ios_mac/caracalClient.xcodeproj/project.xcworkspace/xcuserdata/JP116018.xcuserdatad/UserInterfaceState.xcuserstate
 
 proj.ios_mac/caracalClient.xcodeproj/xcuserdata/JP116018.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+
+*.xccheckout

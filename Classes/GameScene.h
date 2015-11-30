@@ -26,7 +26,12 @@ private:
     b2Body *_groundBody;
     b2Fixture *_bottomFixture;
     b2Fixture *_ballFixture;
+    
     SIOClient* _client;
+    int errorCount;
+    
+    
+    
     std::mutex mtx;
     std::vector<std::string> _inputQuene;
     std::vector<std::string> _outputQuene;
