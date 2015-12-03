@@ -10,6 +10,7 @@
 #include "json/document.h"
 #include "GameScene.h"
 #include "json/writer.h"
+#include "ui/CocosGUI.h"
 
 USING_NS_CC;
 #define mark
@@ -84,7 +85,135 @@ void GameScene::initEnv(){
     groundBox.Set(b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO),
                   b2Vec2(winSize.width/PTM_RATIO, 0));
     _groundBody->CreateFixture(&groundBoxDef);
+    
+    
+    
+    //pad
+    
+    // Create paddle and add it to the layer
+    Sprite *paddle = Sprite::create("paddle-hd.png");// [CCSprite spriteWithFile:@"paddle.png"];
+    paddle->setPosition(Point(winSize.width/2, 50));
+    this->addChild(paddle);
+    
+    // Create paddle body
+    b2BodyDef paddleBodyDef;
+    paddleBodyDef.type = b2_dynamicBody;
+    paddleBodyDef.position.Set(winSize.width/2/PTM_RATIO, 50/PTM_RATIO);
+    paddleBodyDef.userData = paddle;
+    _paddleBody = _world->CreateBody(&paddleBodyDef);
+    
+    // Create paddle shape
+    b2PolygonShape paddleShape;
+    paddleShape.SetAsBox(paddle->getContentSize().width/PTM_RATIO/2,
+                         paddle->getContentSize().height/PTM_RATIO/2);
+    
+    // Create shape definition and add to body
+    b2FixtureDef paddleShapeDef;
+    paddleShapeDef.shape = &paddleShape;
+    paddleShapeDef.density = 10.0f;
+    paddleShapeDef.friction = 0.4f;
+    paddleShapeDef.restitution = 0.1f;
+    _paddleFixture = _paddleBody->CreateFixture(&paddleShapeDef);
+    
+    
+    
+    
+    this->setTouchEnabled(true);
+    
+    // Restrict paddle along the x axis
+    b2PrismaticJointDef jointDef;
+    b2Vec2 worldAxis(1.0f, 0.0f);
+    jointDef.collideConnected = true;
+    jointDef.Initialize(_paddleBody, _groundBody,
+                        _paddleBody->GetWorldCenter(), worldAxis);
+    _world->CreateJoint(&jointDef);
 
+    
+
+ 
+    
+    auto touchListener = EventListenerTouchOneByOne::create();
+    touchListener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
+    touchListener->onTouchEnded = CC_CALLBACK_2(GameScene::onTouchEnded, this);
+    touchListener->onTouchMoved = CC_CALLBACK_2(GameScene::onTouchMoved, this);
+    touchListener->onTouchCancelled = CC_CALLBACK_2(GameScene::onTouchCancelled, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+    
+    
+    auto button = Button::create("Button_Normal.png", "Button_Press.png", "Button_Disable.png");
+    
+    //button->setTitleText("Button Text");
+    button->setPosition(Point(100,100));
+    button->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type){
+        switch (type)
+        {
+            case ui::Widget::TouchEventType::BEGAN:
+                break;
+            case ui::Widget::TouchEventType::ENDED:
+               // std::cout << "Button 1 clicked" << std::endl;
+                break;
+            default:
+                break;
+        }
+    });
+    
+    this->addChild(button);
+
+}
+
+bool GameScene::onTouchBegan(Touch* touch, Event* event)
+{
+    cocos2d::log("touch begin");
+    if (_mouseJoint != NULL)
+        return false;
+    
+    Point location = touch->getLocationInView();
+    location =  Director::getInstance()->convertToGL(location);//[[CCDirector sharedDirector] convertToGL:location];
+    b2Vec2 locationWorld = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    
+    if (_paddleFixture->TestPoint(locationWorld)) {
+        b2MouseJointDef md;
+        md.bodyA = _groundBody;
+        md.bodyB = _paddleBody;
+        md.target = locationWorld;
+        md.collideConnected = true;
+        md.maxForce = 1000.0f * _paddleBody->GetMass();
+        
+        _mouseJoint = (b2MouseJoint *)_world->CreateJoint(&md);
+        _paddleBody->SetAwake(true);
+    }
+    return true;
+}
+
+void GameScene::onTouchEnded(Touch* touch, Event* event)
+{
+    cocos2d::log("touch ended");
+    if (_mouseJoint) {
+        _world->DestroyJoint(_mouseJoint);
+        _mouseJoint = NULL;
+    }
+}
+
+void GameScene::onTouchMoved(Touch* touch, Event* event)
+{
+    cocos2d::log("touch moved");
+    
+    if (_mouseJoint == NULL) return;
+    
+    Point location = touch->getLocationInView();
+    location =  Director::getInstance()->convertToGL(location);//[[CCDirector sharedDirector] convertToGL:location];
+    b2Vec2 locationWorld = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    
+    _mouseJoint->SetTarget(locationWorld);
+}
+
+void GameScene::onTouchCancelled(Touch* touch, Event* event)
+{
+    cocos2d::log("touch cancelled");
+    if (_mouseJoint) {
+        _world->DestroyJoint(_mouseJoint);
+        _mouseJoint = NULL;
+    }
 }
 
 void GameScene::initBall(){
@@ -192,7 +321,7 @@ void GameScene::onError(SIOClient* client, const std::string& data){
     // SocketIO::failed
     errorCount++;
     if(errorCount < RETRY_COUNT){
-       _client = SocketIO::connect("http://10.135.176.39:3000/", *this);
+       _client = SocketIO::connect(URL, *this);
     }
     log("onError");
 }
@@ -212,7 +341,7 @@ void GameScene::onReceiveStateEvent(SIOClient* client , const std::string& data)
     doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
     std::string method = doc["method"].GetString();
     if(method == "start"){
-        //this->schedule(schedule_selector(GameScene::tick));
+        this->schedule(schedule_selector(GameScene::tick));
     }
 }
 
@@ -228,7 +357,7 @@ void GameScene::parse(const std::string& data){
     doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
     float x,y,r;
     if(doc["params"].IsArray()){
-        for (SizeType i = 0; i < doc["params"].Size(); i++){
+        for (int i = 0; i < doc["params"].Size(); i++){
             if(doc["params"][i].HasMember("x")){
                // goast = Sprite::create("ball.png");
                 x = doc["params"][i]["x"].GetDouble();
@@ -346,7 +475,6 @@ StringBuffer makeJsonPosition(){
     StringBuffer buffer;
     Writer<StringBuffer> writer(buffer);
     document.Accept(writer);
-    
     return buffer;
 }
 

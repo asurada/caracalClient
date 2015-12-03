@@ -16,6 +16,7 @@
 #include <SocketIO.h>
 
 #define PTM_RATIO 32.0
+USING_NS_CC;
 using namespace cocos2d::network;
 using namespace cocos2d::ui;
 
@@ -30,6 +31,10 @@ private:
     SIOClient* _client;
     int errorCount;
     
+    
+    b2Body *_paddleBody;
+    b2Fixture *_paddleFixture;
+    b2MouseJoint *_mouseJoint;
     
     
     std::mutex mtx;
@@ -57,6 +62,12 @@ private:
     virtual void onClose(SIOClient* client);
     virtual void onError(SIOClient* client, const std::string& data);
     void dispatchThreadCallbacks();
+    
+    
+    bool onTouchBegan(Touch* touch, Event* event);
+    void onTouchEnded(Touch* touch, Event* event);
+    void onTouchMoved(Touch* touch, Event* event);
+    void onTouchCancelled(Touch* touch, Event* event);
     
 public:
     static cocos2d::Scene* createScene();

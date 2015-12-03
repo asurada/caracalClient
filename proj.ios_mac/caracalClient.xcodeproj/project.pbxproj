@@ -64,6 +64,11 @@
 		A2DD09E31BEC92370048B722 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DD09E11BEC92370048B722 /* Socket.cpp */; };
 		A2DD09E61BEC92D80048B722 /* SocketTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DD09E41BEC92D80048B722 /* SocketTestScene.cpp */; };
 		A2E162541BE9F6E600CF27CA /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
+		A2FC98B61C1032E7004E6FFD /* Button_Press.png in Resources */ = {isa = PBXBuildFile; fileRef = A2FC98B31C1032E7004E6FFD /* Button_Press.png */; };
+		A2FC98B71C1032E7004E6FFD /* Button_Disable.png in Resources */ = {isa = PBXBuildFile; fileRef = A2FC98B41C1032E7004E6FFD /* Button_Disable.png */; };
+		A2FC98B81C1032E7004E6FFD /* Button_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = A2FC98B51C1032E7004E6FFD /* Button_Normal.png */; };
+		A2FC98BA1C103876004E6FFD /* paddle-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = A2FC98B91C103876004E6FFD /* paddle-hd.png */; };
+		A2FC98BC1C1038B8004E6FFD /* paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = A2FC98BB1C1038B8004E6FFD /* paddle.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -164,6 +169,11 @@
 		A2DD09E21BEC92370048B722 /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
 		A2DD09E41BEC92D80048B722 /* SocketTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketTestScene.cpp; sourceTree = "<group>"; };
 		A2DD09E51BEC92D80048B722 /* SocketTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SocketTestScene.h; sourceTree = "<group>"; };
+		A2FC98B31C1032E7004E6FFD /* Button_Press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Press.png; sourceTree = "<group>"; };
+		A2FC98B41C1032E7004E6FFD /* Button_Disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Disable.png; sourceTree = "<group>"; };
+		A2FC98B51C1032E7004E6FFD /* Button_Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Normal.png; sourceTree = "<group>"; };
+		A2FC98B91C103876004E6FFD /* paddle-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paddle-hd.png"; sourceTree = "<group>"; };
+		A2FC98BB1C1038B8004E6FFD /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -293,6 +303,11 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A2FC98BB1C1038B8004E6FFD /* paddle.png */,
+				A2FC98B91C103876004E6FFD /* paddle-hd.png */,
+				A2FC98B31C1032E7004E6FFD /* Button_Press.png */,
+				A2FC98B41C1032E7004E6FFD /* Button_Disable.png */,
+				A2FC98B51C1032E7004E6FFD /* Button_Normal.png */,
 				A223D85A1BFC6A82002AC32C /* ball-hd.png */,
 				A223D8581BFC6A73002AC32C /* ball.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
@@ -461,20 +476,25 @@
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
+				A2FC98B61C1032E7004E6FFD /* Button_Press.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
+				A2FC98B81C1032E7004E6FFD /* Button_Normal.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				A223D8591BFC6A73002AC32C /* ball.png in Resources */,
+				A2FC98BC1C1038B8004E6FFD /* paddle.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				A223D85B1BFC6A82002AC32C /* ball-hd.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
+				A2FC98BA1C103876004E6FFD /* paddle-hd.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
+				A2FC98B71C1032E7004E6FFD /* Button_Disable.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
