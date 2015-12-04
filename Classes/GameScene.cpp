@@ -46,9 +46,9 @@ bool GameScene::init()
     _client->on("JSON", CC_CALLBACK_2(GameScene::onReceiveJSONEvent, this));
     _client->on("state", CC_CALLBACK_2(GameScene::onReceiveStateEvent, this));
     
-    
+    this->schedule(schedule_selector(GameScene::tick),(1.0/60.0f));
     this->schedule(schedule_selector(GameScene::outputQueueUpdate),(1.0/60.0f));
-    this->schedule(schedule_selector(GameScene::inputQueueUpdate),(1.0/60.0f));
+   // this->schedule(schedule_selector(GameScene::inputQueueUpdate),(1.0/60.0f));
     
     
     return true;
@@ -86,14 +86,19 @@ void GameScene::initEnv(){
                   b2Vec2(winSize.width/PTM_RATIO, 0));
     _groundBody->CreateFixture(&groundBoxDef);
     
-    
-    
     //pad
-    
     // Create paddle and add it to the layer
     Sprite *paddle = Sprite::create("paddle-hd.png");// [CCSprite spriteWithFile:@"paddle.png"];
     paddle->setPosition(Point(winSize.width/2, 50));
     this->addChild(paddle);
+    paddle->setTag(10);
+    
+    
+    paddleCopy = Sprite::create("paddle-hd.png");// [CCSprite spriteWithFile:@"paddle.png"];
+    paddleCopy->setPosition(Point(winSize.width/2, 270));
+    this->addChild(paddleCopy);
+
+    
     
     // Create paddle body
     b2BodyDef paddleBodyDef;
@@ -102,11 +107,24 @@ void GameScene::initEnv(){
     paddleBodyDef.userData = paddle;
     _paddleBody = _world->CreateBody(&paddleBodyDef);
     
+    
+    
+//    b2BodyDef paddleBodyDefCopy;
+//    paddleBodyDefCopy.type = b2_dynamicBody;
+//    paddleBodyDefCopy.position.Set(winSize.width/2/PTM_RATIO, 270/PTM_RATIO);
+//    paddleBodyDefCopy.userData = paddleCopy;
+//    _paddleBodyCopy = _world->CreateBody(&paddleBodyDefCopy);
+    
     // Create paddle shape
     b2PolygonShape paddleShape;
     paddleShape.SetAsBox(paddle->getContentSize().width/PTM_RATIO/2,
                          paddle->getContentSize().height/PTM_RATIO/2);
     
+    
+//    b2PolygonShape paddleShapeCopy;
+//    paddleShapeCopy.SetAsBox(paddleCopy->getContentSize().width/PTM_RATIO/2,
+//                             paddleCopy->getContentSize().height/PTM_RATIO/2);
+//    
     // Create shape definition and add to body
     b2FixtureDef paddleShapeDef;
     paddleShapeDef.shape = &paddleShape;
@@ -115,7 +133,13 @@ void GameScene::initEnv(){
     paddleShapeDef.restitution = 0.1f;
     _paddleFixture = _paddleBody->CreateFixture(&paddleShapeDef);
     
-    
+//    b2FixtureDef paddleShapeDefCopy;
+//    paddleShapeDefCopy.shape = &paddleShapeCopy;
+//    paddleShapeDefCopy.density = 10.0f;
+//    paddleShapeDefCopy.friction = 0.4f;
+//    paddleShapeDefCopy.restitution = 0.1f;
+//    _paddleFixtureCopy = _paddleBodyCopy->CreateFixture(&paddleShapeDefCopy);
+//    
     
     
     this->setTouchEnabled(true);
@@ -127,6 +151,15 @@ void GameScene::initEnv(){
     jointDef.Initialize(_paddleBody, _groundBody,
                         _paddleBody->GetWorldCenter(), worldAxis);
     _world->CreateJoint(&jointDef);
+    
+    
+//    b2PrismaticJointDef jointDefCopy;
+//    b2Vec2 worldAxisCopy(1.0f, 0.0f);
+//    jointDefCopy.collideConnected = true;
+//    jointDefCopy.Initialize(_paddleBodyCopy, _groundBody,
+//                            _paddleBodyCopy->GetWorldCenter(), worldAxisCopy);
+//    _world->CreateJoint(&jointDefCopy);
+
 
     
 
@@ -184,6 +217,9 @@ bool GameScene::onTouchBegan(Touch* touch, Event* event)
     }
     return true;
 }
+
+
+
 
 void GameScene::onTouchEnded(Touch* touch, Event* event)
 {
@@ -244,9 +280,9 @@ void GameScene::initBall(){
     ballShapeDef.restitution = 1.0f;
     _ballFixture = ballBody->CreateFixture(&ballShapeDef);
     
-    b2Vec2 force = b2Vec2(10, 100);
-    ballBody->ApplyLinearImpulse(ballBodyDef.position, force, true);
-    
+//    b2Vec2 force = b2Vec2(10, 10);
+//    ballBody->ApplyLinearImpulse(ballBodyDef.position, force, true);
+//    
 }
 
 void GameScene::tick(float delta){
@@ -257,41 +293,50 @@ void GameScene::tick(float delta){
             Sprite *sprite = (Sprite *)b->GetUserData();
             Point newPosition = Point(b->GetPosition().x * PTM_RATIO,
                                       b->GetPosition().y * PTM_RATIO);
-         
+            
             float rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
-            std::string pos =  StringUtils::format("(%f,%f)",newPosition.x,newPosition.y);
-   
-            log("%f,%f",newPosition.x,newPosition.y);
-         
-            
-            rapidjson::Document document;
-            document.SetObject();
-            rapidjson::Document::AllocatorType& allocator = document.GetAllocator();
-            rapidjson::Value param(rapidjson::kObjectType);
-            rapidjson::Value x(rapidjson::kObjectType);
-            rapidjson::Value y(rapidjson::kObjectType);
-            rapidjson::Value r(rapidjson::kObjectType);
-            rapidjson::Value object(rapidjson::kObjectType);
-            
-            document.AddMember("jsonrpc", 2, allocator);
-            document.AddMember("method", "move", allocator);
-            param.AddMember("x",newPosition.x, allocator);
-            //array.PushBack(x, allocator);
-            param.AddMember("y", newPosition.y, allocator);
-            //array.PushBack(y, allocator);
-            param.AddMember("r", rotation, allocator);
-            //array.PushBack(r, allocator);
-            document.AddMember("params", param, allocator);
-            
-            StringBuffer buffer;
-            Writer<StringBuffer> writer(buffer);
-            document.Accept(writer);
-            
-            
-            _outputQuene.push_back(buffer.GetString());
-            
             sprite->setPosition(newPosition);
             sprite->setRotation(rotation);
+            
+            if(sprite->getTag() == 10 ){
+                std::string pos =  StringUtils::format("(%f,%f)",newPosition.x,newPosition.y);
+                log("%f,%f",newPosition.x,newPosition.y);
+                
+                
+                if(tempX == newPosition.x){
+                    return;
+                }
+                
+                rapidjson::Document document;
+                document.SetObject();
+                rapidjson::Document::AllocatorType& allocator = document.GetAllocator();
+                rapidjson::Value param(rapidjson::kObjectType);
+                rapidjson::Value x(rapidjson::kObjectType);
+                rapidjson::Value y(rapidjson::kObjectType);
+                rapidjson::Value r(rapidjson::kObjectType);
+                rapidjson::Value object(rapidjson::kObjectType);
+                tempX = newPosition.x;
+                document.AddMember("jsonrpc", 2, allocator);
+                document.AddMember("method", "move", allocator);
+                param.AddMember("x",tempX, allocator);
+               
+                //array.PushBack(x, allocator);
+//                param.AddMember("y", newPosition.y, allocator);
+//                //array.PushBack(y, allocator);
+//                param.AddMember("r", rotation, allocator);
+                //array.PushBack(r, allocator);
+                document.AddMember("params", param, allocator);
+                
+                StringBuffer buffer;
+                Writer<StringBuffer> writer(buffer);
+                document.Accept(writer);
+                
+                
+                _outputQuene.push_back(buffer.GetString());
+                
+           
+            }
+           
         }
     }
 }
@@ -341,7 +386,7 @@ void GameScene::onReceiveStateEvent(SIOClient* client , const std::string& data)
     doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
     std::string method = doc["method"].GetString();
     if(method == "start"){
-        this->schedule(schedule_selector(GameScene::tick));
+     
     }
 }
 
@@ -355,26 +400,27 @@ void GameScene::onReceiveJSONEvent(SIOClient* client , const std::string& data){
 void GameScene::parse(const std::string& data){
     rapidjson::Document doc;
     doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
-    float x,y,r;
+    float x;
     if(doc["params"].IsArray()){
         for (int i = 0; i < doc["params"].Size(); i++){
             if(doc["params"][i].HasMember("x")){
                // goast = Sprite::create("ball.png");
                 x = doc["params"][i]["x"].GetDouble();
                 printf("x = %f\n", x);
+                paddleCopy->setPosition(x, paddleCopy->getPosition().y);
             }
-            if(doc["params"][i].HasMember("y")){
-                y = doc["params"][i]["y"].GetDouble();
-                goast->setPosition(Point(x,y));
-                printf("y = %f\n", y);
-                
-            }
-            if(doc["params"][i].HasMember("r")){
-                r = doc["params"][i]["r"].GetDouble();
-                goast->setRotation(r);
-               // this->addChild(smallBall);
-                printf("r = %f\n", r);
-            }
+//            if(doc["params"][i].HasMember("y")){
+//                y = doc["params"][i]["y"].GetDouble();
+//                goast->setPosition(Point(x,y));
+//                printf("y = %f\n", y);
+//                
+//            }
+//            if(doc["params"][i].HasMember("r")){
+//                r = doc["params"][i]["r"].GetDouble();
+//                goast->setRotation(r);
+//               // this->addChild(smallBall);
+//                printf("r = %f\n", r);
+//            }
         }
     }
  

@@ -30,11 +30,17 @@ private:
     
     SIOClient* _client;
     int errorCount;
+    float tempX;
     
     
     b2Body *_paddleBody;
     b2Fixture *_paddleFixture;
     b2MouseJoint *_mouseJoint;
+    
+    Sprite *paddleCopy;
+    b2Body *_paddleBodyCopy;
+    b2Fixture *_paddleFixtureCopy;
+    b2MouseJoint *_mouseJointCopy;
     
     
     std::mutex mtx;
