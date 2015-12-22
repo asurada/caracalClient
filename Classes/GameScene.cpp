@@ -321,9 +321,9 @@ void GameScene::tick(float delta){
                 param.AddMember("x",tempX, allocator);
                
                 //array.PushBack(x, allocator);
-//                param.AddMember("y", newPosition.y, allocator);
-//                //array.PushBack(y, allocator);
-//                param.AddMember("r", rotation, allocator);
+                //param.AddMember("y", newPosition.y, allocator);
+                //array.PushBack(y, allocator);
+                //param.AddMember("r", rotation, allocator);
                 //array.PushBack(r, allocator);
                 document.AddMember("params", param, allocator);
                 
