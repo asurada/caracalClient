@@ -195,7 +195,7 @@
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9C3241D11C2AE2360053C075 /* OperationLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OperationLayer.cpp; sourceTree = "<group>"; };
-		9C3241D21C2AE2360053C075 /* OperationLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OperationLayer.hpp; sourceTree = "<group>"; };
+		9C3241D21C2AE2360053C075 /* OperationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperationLayer.h; sourceTree = "<group>"; };
 		A21787DC1BE9FE6C001A0050 /* API.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = API.cpp; sourceTree = "<group>"; };
 		A21787DD1BE9FE6C001A0050 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		A223D8581BFC6A73002AC32C /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
@@ -435,7 +435,7 @@
 				A21787DC1BE9FE6C001A0050 /* API.cpp */,
 				A21787DD1BE9FE6C001A0050 /* API.h */,
 				9C3241D11C2AE2360053C075 /* OperationLayer.cpp */,
-				9C3241D21C2AE2360053C075 /* OperationLayer.hpp */,
+				9C3241D21C2AE2360053C075 /* OperationLayer.h */,
 			);
 			name = Classes;
 			path = ../Classes;
