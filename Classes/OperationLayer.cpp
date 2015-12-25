@@ -7,6 +7,8 @@
 //
 
 #include "OperationLayer.h"
+#include "Stone.hpp"
+#include "Monster.hpp"
 
 
 OperationLayer::OperationLayer()
@@ -14,8 +16,8 @@ OperationLayer::OperationLayer()
 //    magicSprites = CCArray::create();
 //    magicSprites->retain();
 //    magicMarks->retain();
-    brush = Sprite::create("largeBrush.png");
-    brush->retain();
+//    brush = Sprite::create("largeBrush.png");
+//    brush->retain();
 }
 
 OperationLayer::~OperationLayer(){
@@ -26,11 +28,7 @@ OperationLayer::~OperationLayer(){
 bool OperationLayer::init()
 {
     bool bRet = false;
-    //CCSize s = CCDirector::sharedDirector()->getWinSize();
-    cocos2d::CCDirector * pDirector = cocos2d::CCDirector::sharedDirector();
-    //CCLOG("width=%f,height=%f",s.width,s.height);
-  //  _touchTrailLayer = TouchTrailLayer::create();
-  //  _touchTrailLayer->setDelegate(this);
+    Director * pDirector = Director::getInstance();
     marklayer = Layer::create();
     marklayer->setContentSize(Size(pDirector->getWinSize().width,pDirector->getWinSize().height/2));
     marklayer->setAnchorPoint(Point(0.5,0.5));
@@ -39,75 +37,164 @@ bool OperationLayer::init()
     {
         return false;
     }
-    setTouchEnabled(true);
+    
+    this->setTouchEnabled(true);
+
     bRet = true;
-    this->addChild(_touchTrailLayer,2);
     this->addChild(marklayer,1);
-    //#define TRIANGLE 3
-    //#define RECT     4
-    //#define RHOMBUS  5
-    //#define PENTAGON 6
-    //#define HEXAGON  7
-    //analysisLogic = this->createBall(HEXAGON);
-    CCArray* array = Array::create();
-    array->addObject(StoneData::create("bll_01.png"));
-    array->addObject(StoneData::create("bll_02.png"));
-    array->addObject(StoneData::create("bll_03.png"));
-    array->addObject(StoneData::create("bll_04.png"));
-    array->addObject(StoneData::create("bll_05.png"));
-    array->addObject(StoneData::create("bll_06.png"));
-    analysisLogic->init(this,array);
+    Vect array;
+
     return bRet;
 }
 
 
 
-bool OperationLayer::onTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
+bool OperationLayer::onTouchBegan(Touch *touch, Event *pEvent)
 {
-    CCSetIterator it;
-    CCTouch* touch;
-    for( it = pTouches->begin(); it != pTouches->end(); it++)
-    {
-        touch = (CCTouch*)(*it);
-        if(!touch)
-            break;
-        if(magicSprites != NULL && this->magicSprites->count()>0){
-            magicSprites->removeAllObjects();
-        }
-        CCPoint location = touch->getLocationInView();
-        location = CCDirector::sharedDirector()->convertToGL(location);
-    }
+
+    CCLOG("onTouchBegan");
+    Point location = touch->getLocationInView();
+    location = Director::getInstance()->convertToGL(location);
+    
     return true;
 }
 
-void OperationLayer::onTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
+void OperationLayer::onTouchMoved(Touch *touch, Event *pEvent)
 {
-    CCSetIterator it;
-    for( it = pTouches->begin(); it != pTouches->end(); it++)
-    {
-        CCTouch* touch = (CCTouch*)(*it);
-        if(!touch)
-            break;
-        CCPoint location = touch->getLocationInView();
-        location = CCDirector::sharedDirector()->convertToGL(location);
-    }
+    Vec2 p = touch->getLocation();
+   CCLOG("onTouchMoved x:%f,y:%f",p.x,p.y);
+
+  
+//    Touch* touch = (Touch*)(*it);
+//    if(!touch)
+//        break;
+//    Point location = touch->getLocationInView();
+//    location = Director::sharedDirector()->convertToGL(location);
+    
 }
 
-void OperationLayer::onTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
+void OperationLayer::onTouchEnded(Touch *touch, Event *pEvent)
 {
-    CCSetIterator it;
-    CCTouch* touch;
-    
-    for( it = pTouches->begin(); it != pTouches->end(); it++)
-    {
-        touch = (CCTouch*)(*it);
-        
-        if(!touch)
-            break;
-        
-    }
+    CCLOG("onTouchEnded");
+//    for( it = pTouches->begin(); it != pTouches->end(); it++)
+//    {
+//        touch = (CCTouch*)(*it);
+//        
+//        if(!touch)
+//            break;
+//        
+//    }
 }
 
 void OperationLayer::onTouchCancelled(Touch* touch, Event* event){
-    
+     CCLOG("onTouchCancelled");
 }
+
+Scene* OperationLayer::createScene(){
+    // 'scene' is an autorelease object
+    auto scene = Scene::create();
+    
+    // 'layer' is an autorelease object
+    auto layer = OperationLayer::create();
+    
+    // add layer as a child to scene
+    scene->addChild(layer);
+    
+    // return the scene
+    return scene;
+}
+
+
+OperationLayer* OperationLayer::create()
+{
+    OperationLayer* pSprite = new OperationLayer();
+    
+    if (pSprite->init())
+    {
+        pSprite->autorelease();
+        pSprite->initOptions();
+        pSprite->addEvents();
+        return pSprite;
+    }
+    
+    CC_SAFE_DELETE(pSprite);
+    return NULL;
+}
+
+void OperationLayer::initOptions()
+{
+//    Sprite *spriteObject = Sprite::create("monster.png");
+//    spriteObject->setPosition(Point(300,300));
+//    this->addChild(spriteObject);
+    Stone * stoneObject  = Stone::create("bll_02.png");
+    stoneObject->setPosition(Point(300,400));
+    this->addChild(stoneObject);
+    
+    
+    stoneObject  = Stone::create("bll_02.png");
+    stoneObject->setPosition(Point(226,148));
+    this->addChild(stoneObject);
+    
+    
+    stoneObject  = Stone::create("bll_02.png");
+    stoneObject->setPosition(Point(300,300));
+    this->addChild(stoneObject);
+    
+    
+    stoneObject  = Stone::create("bll_02.png");
+    stoneObject->setPosition(Point(300,300));
+    this->addChild(stoneObject);
+    
+    
+    stoneObject  = Stone::create("bll_02.png");
+    stoneObject->setPosition(Point(300,300));
+    this->addChild(stoneObject);
+    
+    
+    stoneObject  = Stone::create("bll_02.png");
+    stoneObject->setPosition(Point(300,300));
+    this->addChild(stoneObject);
+    
+    
+    
+    Monster * monsterObject  = Monster::create("monster.png");
+    monsterObject->setPosition(Point(300,300));
+    this->addChild(monsterObject);
+    
+    // do things here like setTag(), setPosition(), any custom logic.
+}
+
+
+
+void OperationLayer::addEvents()
+{
+    auto listener = cocos2d::EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);
+    
+    listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
+    {
+        Vec2 p = touch->getLocation();
+        cocos2d::Rect rect = this->getBoundingBox();
+        
+        if(rect.containsPoint(p))
+        {
+            OperationLayer::onTouchBegan(touch,event);
+            return true; // to indicate that we have consumed it.
+        }
+        
+        return false; // we did not consume this event, pass thru.
+    };
+    
+    listener->onTouchMoved = [=](cocos2d::Touch* touch, cocos2d::Event* event){
+         OperationLayer::onTouchMoved(touch,event);
+    };
+    
+    listener->onTouchEnded = [=](cocos2d::Touch* touch, cocos2d::Event* event)
+    {
+        Vec2 p = touch->getLocation();
+        OperationLayer::onTouchEnded(touch,event);
+    };
+    
+    cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 30);
+}
+

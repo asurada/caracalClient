@@ -1,4 +1,5 @@
 #include "AppDelegate.h"
+#include "OperationLayer.h"
 //#include "SocketTestScene.h"
 #include "GameScene.h"
 
@@ -76,7 +77,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = GameScene::createScene();
+    auto scene = OperationLayer::createScene();
 
     // run
     director->runWithScene(scene);

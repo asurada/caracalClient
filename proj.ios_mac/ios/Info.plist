@@ -57,6 +57,19 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>jp.naver.${PRODUCT_NAME:rfc1034identifier}</key>
+			<dict>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
 	<key>UIAppFonts</key>
 	<array/>
 	<key>UILaunchImages</key>
@@ -146,22 +159,8 @@
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-    
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-        <key>NSExceptionDomains</key>
-        <dict>
-            <key>jp.naver.${PRODUCT_NAME:rfc1034identifier}</key>
-            <dict>
-                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-                <false/>
-            </dict>
-        </dict>
-    </dict>
 </dict>
 </plist>

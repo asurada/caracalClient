@@ -100,6 +100,8 @@
 		A2954A3D1C28EEBD000BB60D /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = A2954A141C28EEBD000BB60D /* .gitkeep */; };
 		A2954A401C28F28D000BB60D /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2954A3E1C28F28D000BB60D /* GameScene.cpp */; };
 		A2954A461C292436000BB60D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2954A441C292436000BB60D /* AppDelegate.cpp */; };
+		A2B225C21C2D1711000083DF /* Stone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2B225C01C2D1711000083DF /* Stone.cpp */; };
+		A2B225C51C2D276F000083DF /* Monster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2B225C31C2D276F000083DF /* Monster.cpp */; };
 		A2DD09E31BEC92370048B722 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DD09E11BEC92370048B722 /* Socket.cpp */; };
 		A2DD09E61BEC92D80048B722 /* SocketTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DD09E41BEC92D80048B722 /* SocketTestScene.cpp */; };
 		A2E162541BE9F6E600CF27CA /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
@@ -245,6 +247,10 @@
 		A2954A3F1C28F28D000BB60D /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		A2954A441C292436000BB60D /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		A2954A451C292436000BB60D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A2B225C01C2D1711000083DF /* Stone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stone.cpp; sourceTree = "<group>"; };
+		A2B225C11C2D1711000083DF /* Stone.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Stone.hpp; sourceTree = "<group>"; };
+		A2B225C31C2D276F000083DF /* Monster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Monster.cpp; sourceTree = "<group>"; };
+		A2B225C41C2D276F000083DF /* Monster.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Monster.hpp; sourceTree = "<group>"; };
 		A2DD09E11BEC92370048B722 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
 		A2DD09E21BEC92370048B722 /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
 		A2DD09E41BEC92D80048B722 /* SocketTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketTestScene.cpp; sourceTree = "<group>"; };
@@ -436,6 +442,10 @@
 				A21787DD1BE9FE6C001A0050 /* API.h */,
 				9C3241D11C2AE2360053C075 /* OperationLayer.cpp */,
 				9C3241D21C2AE2360053C075 /* OperationLayer.h */,
+				A2B225C01C2D1711000083DF /* Stone.cpp */,
+				A2B225C11C2D1711000083DF /* Stone.hpp */,
+				A2B225C31C2D276F000083DF /* Monster.cpp */,
+				A2B225C41C2D276F000083DF /* Monster.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -721,6 +731,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2B225C51C2D276F000083DF /* Monster.cpp in Sources */,
 				A21787DE1BE9FE6C001A0050 /* API.cpp in Sources */,
 				A2DD09E31BEC92370048B722 /* Socket.cpp in Sources */,
 				A2954A461C292436000BB60D /* AppDelegate.cpp in Sources */,
@@ -728,6 +739,7 @@
 				9C3241D31C2AE2360053C075 /* OperationLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				A2954A401C28F28D000BB60D /* GameScene.cpp in Sources */,
+				A2B225C21C2D1711000083DF /* Stone.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
