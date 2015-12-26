@@ -17,11 +17,22 @@ USING_NS_CC;
 class Stone :public cocos2d::Sprite{
 private:
     typedef Sprite super;
+    void addEvents();
+    
+    
+    //return initWithTexture(nullptr, Rect::ZERO );
+    
 public:
-    virtual void init(const char *pName) =0;
+    
     static Stone* create(const std::string& name);
-    
-    
+    bool onTouchBegan(Touch* touch, Event* event);
+    void onTouchEnded(Touch* touch, Event* event);
+    void onTouchMoved(Touch* touch, Event* event);
+    void onTouchCancelled(Touch* touch, Event* event);
+    void initOptions();
+    Stone();
+    ~Stone();
+
 };
 
 

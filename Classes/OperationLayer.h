@@ -8,6 +8,7 @@
 
 #ifndef OperationLayer_hpp
 #define OperationLayer_hpp
+#include "Stone.hpp"
 
 #include <stdio.h>
 #include "cocos2d.h"
@@ -30,6 +31,9 @@ private:
     
    
     void addEvents();
+    Sprite* addBrush(Point point);
+    Vector<Stone*> stones;
+    Sprite* adjustBrush(Sprite* brush,Point end);
     void initOptions();
     bool onTouchBegan(Touch* touch, Event* event);
     void onTouchEnded(Touch* touch, Event* event);
