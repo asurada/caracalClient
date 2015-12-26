@@ -9,7 +9,7 @@
 #include "OperationLayer.h"
 #include "Stone.hpp"
 #include "Monster.hpp"
-
+#include "ui/CocosGUI.h"
 
 OperationLayer::OperationLayer()
 {
@@ -76,6 +76,13 @@ void OperationLayer::onTouchEnded(Touch *touch, Event *pEvent)
         brush->removeFromParentAndCleanup(true);
         brush = NULL;
     }
+    String* strOrder = String::create("");
+    for (String* str:order) {
+        strOrder = String::createWithFormat("%s\n%s",strOrder->getCString(),str->getCString());
+    }
+    order.clear();
+    myLabel->setString(strOrder->getCString());
+    
 
 }
 
@@ -116,35 +123,69 @@ OperationLayer* OperationLayer::create()
 
 void OperationLayer::initOptions()
 {
+    
+
+    
+    myLabel = Label::createWithBMFont("myFont.fnt", "Your Text");
+    myLabel->setPosition(Point(180,208));
+    this->addChild(myLabel);
+    
+    auto button = Button::create("Button_Normal.png", "Button_Press.png", "Button_Disable.png");
+    button->setTitleText("clear");
+    
+    button->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type){
+        switch (type)
+        {
+            case ui::Widget::TouchEventType::BEGAN:
+                break;
+            case ui::Widget::TouchEventType::ENDED:
+                for (Sprite*  brush : brushes) {
+                    brush->removeFromParentAndCleanup(true);
+                }
+                brushes.clear();
+                break;
+            default:
+                break;
+        }
+    });
+    button->setPosition(Point(230,278));
+    this->addChild(button);
+    
 
     Stone * stoneObject  = Stone::create("bll_02.png");
-    stoneObject->setPosition(Point(300,400));
+    stoneObject->setPosition(Point(230,200));
     this->addChild(stoneObject);
+    stoneObject->setTag(1);
     stones.pushBack(stoneObject);
     
     stoneObject  = Stone::create("bll_02.png");
     stoneObject->setPosition(Point(230,148));
     this->addChild(stoneObject);
+    stoneObject->setTag(2);
     stones.pushBack(stoneObject);
     
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(230,40));
     this->addChild(stoneObject);
+    stoneObject->setTag(3);
     stones.pushBack(stoneObject);
     
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(170,94));
     this->addChild(stoneObject);
+    stoneObject->setTag(4);
     stones.pushBack(stoneObject);
     
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(309,94));
     this->addChild(stoneObject);
+    stoneObject->setTag(5);
     stones.pushBack(stoneObject);
     
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(290,100));
     this->addChild(stoneObject);
+    stoneObject->setTag(6);
     stones.pushBack(stoneObject);
     
     
@@ -174,6 +215,8 @@ void OperationLayer::addEvents()
             for (auto stone : stones){
                 cocos2d::Rect rect = stone->getBoundingBox();
                 if(rect.containsPoint(p)){
+                    preStone = stone;
+                    CCLOG("start :%d",stone->getTag());
                     brush = addBrush(stone->getPosition());
                     stone->onTouchBegan(touch, event);
                 }
@@ -198,9 +241,14 @@ void OperationLayer::addEvents()
              for (auto stone : stones){
                 cocos2d::Rect rect = stone->getBoundingBox();
                 if(rect.containsPoint(p)){
-                    brush = adjustBrush(brush,stone->getPosition());
                     if(brush == NULL)return;
+                    if(preStone == stone)return;
                     brush->setTag(1);
+                    order.pushBack(String::createWithFormat("(%d,%d)",preStone->getTag(),stone->getTag()));
+                    CCLOG("stone(%d,%d)",preStone->getTag(),stone->getTag());
+                    brush = adjustBrush(brush,stone->getPosition());
+                    brushes.pushBack(brush);
+                    preStone = stone;
                     brush = addBrush(stone->getPosition());
                     stone->onTouchMoved(touch, event);
                 }

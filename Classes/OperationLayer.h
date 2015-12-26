@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 USING_NS_CC;
+using namespace cocos2d::ui;
 
 class OperationLayer : public cocos2d::LayerColor
 {
@@ -27,12 +28,15 @@ private:
     OperationLayer();
     ~OperationLayer();
     Sprite *brush;
+    Stone* preStone;
     Layer * marklayer;
-    
+    Label* myLabel;
    
     void addEvents();
     Sprite* addBrush(Point point);
     Vector<Stone*> stones;
+    Vector<Sprite*> brushes;
+    Vector<String*> order;
     Sprite* adjustBrush(Sprite* brush,Point end);
     void initOptions();
     bool onTouchBegan(Touch* touch, Event* event);

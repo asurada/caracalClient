@@ -54,6 +54,8 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		9C3241D31C2AE2360053C075 /* OperationLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C3241D11C2AE2360053C075 /* OperationLayer.cpp */; };
+		9CFC2B171C2E8AEE0080714D /* myFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 9CFC2B161C2E8AEE0080714D /* myFont.fnt */; };
+		9CFC2B191C2E8C910080714D /* myFont.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CFC2B181C2E8C910080714D /* myFont.png */; };
 		A21787DE1BE9FE6C001A0050 /* API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A21787DC1BE9FE6C001A0050 /* API.cpp */; };
 		A223D8591BFC6A73002AC32C /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = A223D8581BFC6A73002AC32C /* ball.png */; };
 		A223D85B1BFC6A82002AC32C /* ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = A223D85A1BFC6A82002AC32C /* ball-hd.png */; };
@@ -198,6 +200,8 @@
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9C3241D11C2AE2360053C075 /* OperationLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OperationLayer.cpp; sourceTree = "<group>"; };
 		9C3241D21C2AE2360053C075 /* OperationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperationLayer.h; sourceTree = "<group>"; };
+		9CFC2B161C2E8AEE0080714D /* myFont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = myFont.fnt; sourceTree = "<group>"; };
+		9CFC2B181C2E8C910080714D /* myFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myFont.png; sourceTree = "<group>"; };
 		A21787DC1BE9FE6C001A0050 /* API.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = API.cpp; sourceTree = "<group>"; };
 		A21787DD1BE9FE6C001A0050 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		A223D8581BFC6A73002AC32C /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
@@ -389,6 +393,8 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9CFC2B181C2E8C910080714D /* myFont.png */,
+				9CFC2B161C2E8AEE0080714D /* myFont.fnt */,
 				A29549E71C28EEBD000BB60D /* animation */,
 				A29549EC1C28EEBD000BB60D /* attack_1.plist */,
 				A29549ED1C28EEBD000BB60D /* attack_1.png */,
@@ -639,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				9CFC2B191C2E8C910080714D /* myFont.png in Resources */,
 				A2954A2C1C28EEBD000BB60D /* bll_03.png in Resources */,
 				A2954A161C28EEBD000BB60D /* fire.png in Resources */,
 				A2954A321C28EEBD000BB60D /* fire1.png in Resources */,
@@ -683,6 +690,7 @@
 				A2954A3C1C28EEBD000BB60D /* Deco_shine_v1.png in Resources */,
 				A223D8591BFC6A73002AC32C /* ball.png in Resources */,
 				A2FC98BC1C1038B8004E6FFD /* paddle.png in Resources */,
+				9CFC2B171C2E8AEE0080714D /* myFont.fnt in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				A223D85B1BFC6A82002AC32C /* ball-hd.png in Resources */,
 				A2954A2E1C28EEBD000BB60D /* bll_05.png in Resources */,
