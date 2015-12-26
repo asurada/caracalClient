@@ -33,6 +33,8 @@ bool OperationLayer::init()
     marklayer->setContentSize(Size(pDirector->getWinSize().width,pDirector->getWinSize().height/2));
     marklayer->setAnchorPoint(Point(0.5,0.5));
     marklayer->setPosition(Point(0,0));
+    _touchTrailLayer = TouchTrailLayer::create();
+    _touchTrailLayer->setDelegate(this);
     if(!LayerColor::initWithColor(Color4B(241, 196, 15, 0),pDirector->getWinSize().width,pDirector->getWinSize().height))
     {
         return false;
@@ -41,6 +43,7 @@ bool OperationLayer::init()
     this->setTouchEnabled(true);
 
     bRet = true;
+    this->addChild(_touchTrailLayer,2);
     this->addChild(marklayer,1);
     return bRet;
 }
@@ -212,6 +215,7 @@ void OperationLayer::addEvents()
         if(rect.containsPoint(p))
         {
             OperationLayer::onTouchBegan(touch,event);
+            _touchTrailLayer->onTouchBegan(touch, event);
             for (auto stone : stones){
                 cocos2d::Rect rect = stone->getBoundingBox();
                 if(rect.containsPoint(p)){
@@ -238,6 +242,7 @@ void OperationLayer::addEvents()
         if(rect.containsPoint(p))
         {
             OperationLayer::onTouchMoved(touch,event);
+            _touchTrailLayer->onTouchMoved(touch, event);
              for (auto stone : stones){
                 cocos2d::Rect rect = stone->getBoundingBox();
                 if(rect.containsPoint(p)){
@@ -265,7 +270,7 @@ void OperationLayer::addEvents()
         if(rect.containsPoint(p))
         {
             OperationLayer::onTouchEnded(touch,event);
-            
+            _touchTrailLayer->onTouchEnded(touch, event);
             for (auto stone : stones){
                 cocos2d::Rect rect = stone->getBoundingBox();
                 if(rect.containsPoint(p)){
@@ -279,6 +284,13 @@ void OperationLayer::addEvents()
     };
     
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 30);
+    
+    
+//    auto listen2 = cocos2d::EventListenerTouchAllAtOnce::create();
+//    listen2->onTouchesBegan = CC_CALLBACK_2(TouchTrailLayer::onTouchesBegan,_touchTrailLayer);
+//    listen2->onTouchesMoved = CC_CALLBACK_2(TouchTrailLayer::onTouchesMoved,_touchTrailLayer);
+//    listen2->onTouchesEnded = CC_CALLBACK_2(TouchTrailLayer::onTouchesEnded,_touchTrailLayer);
+//    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listen2, _touchTrailLayer);
 }
 
 
@@ -294,7 +306,10 @@ Sprite* OperationLayer::addBrush(Point point){
 }
 
 
-Sprite* OperationLayer::adjustBrush(Sprite* brush,Point end){
+
+
+
+Sprite* OperationLayer::adjustBrush(Sprite* brush,const Vec2& end){
     if(brush == NULL) return brush;
     if(end.isZero())return brush;
     float dist = end.getDistance(brush->getPosition());
@@ -306,4 +321,40 @@ Sprite* OperationLayer::adjustBrush(Sprite* brush,Point end){
     brush->setScaleX(dist*4/320);
     return brush;
 }
+
+
+void OperationLayer::touchBegin_TouchTrail(Point point){
+   CCLOG("touchBegin_TouchTrail");
+   if(_touchTrailLayer->insert(point)){
+      
+       //魔法石毎アニメ
+        //animate(spirit);
+    }
+
+}
+
+void OperationLayer::touchMove_TouchTrail(Point point){
+    CCLOG("touchMove_TouchTrail");
+    if(_touchTrailLayer->insert(point)){
+       
+    }
+
+}
+
+
+void OperationLayer::touchEnd_TouchTrail(Point point){
+    CCLOG("touchEnd_TouchTrail");
+     _touchTrailLayer->autoDrawAfterFinger();
+}
+
+void OperationLayer::onPop(Point point){
+}
+
+void OperationLayer::onPopLast(Point point){
+}
+
+void OperationLayer::onPopStop(){
+    
+}
+
 

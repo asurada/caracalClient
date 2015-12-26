@@ -1,0 +1,25 @@
+//
+//  TouchTrailCallback.h
+//  legend
+//
+//  Created by Yan Wei on 2014/07/09.
+//
+//
+
+#ifndef __legend__TouchTrailCallback__
+#define __legend__TouchTrailCallback__
+USING_NS_CC;
+
+class TouchTrailCallback{
+
+    
+public:
+    virtual void touchBegin_TouchTrail(Point point) = 0;
+    virtual void touchMove_TouchTrail(Point point) = 0;
+    virtual void touchEnd_TouchTrail(Point point) = 0;
+    virtual void onPop(Point point) = 0;
+    virtual void onPopLast(Point point) = 0;
+    virtual void onPopStop() = 0;
+};
+
+#endif /* defined(__legend__TouchTrailCallback__) */

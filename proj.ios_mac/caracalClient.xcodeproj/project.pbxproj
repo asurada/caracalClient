@@ -56,6 +56,8 @@
 		9C3241D31C2AE2360053C075 /* OperationLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C3241D11C2AE2360053C075 /* OperationLayer.cpp */; };
 		9CFC2B171C2E8AEE0080714D /* myFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 9CFC2B161C2E8AEE0080714D /* myFont.fnt */; };
 		9CFC2B191C2E8C910080714D /* myFont.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CFC2B181C2E8C910080714D /* myFont.png */; };
+		9CFC2B1D1C2E95960080714D /* CCBlade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC2B1B1C2E95960080714D /* CCBlade.cpp */; };
+		9CFC2B201C2E97070080714D /* TouchTrailLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC2B1E1C2E97070080714D /* TouchTrailLayer.cpp */; };
 		A21787DE1BE9FE6C001A0050 /* API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A21787DC1BE9FE6C001A0050 /* API.cpp */; };
 		A223D8591BFC6A73002AC32C /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = A223D8581BFC6A73002AC32C /* ball.png */; };
 		A223D85B1BFC6A82002AC32C /* ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = A223D85A1BFC6A82002AC32C /* ball-hd.png */; };
@@ -202,6 +204,11 @@
 		9C3241D21C2AE2360053C075 /* OperationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperationLayer.h; sourceTree = "<group>"; };
 		9CFC2B161C2E8AEE0080714D /* myFont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = myFont.fnt; sourceTree = "<group>"; };
 		9CFC2B181C2E8C910080714D /* myFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myFont.png; sourceTree = "<group>"; };
+		9CFC2B1B1C2E95960080714D /* CCBlade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCBlade.cpp; sourceTree = "<group>"; };
+		9CFC2B1C1C2E95960080714D /* CCBlade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBlade.h; sourceTree = "<group>"; };
+		9CFC2B1E1C2E97070080714D /* TouchTrailLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchTrailLayer.cpp; sourceTree = "<group>"; };
+		9CFC2B1F1C2E97070080714D /* TouchTrailLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchTrailLayer.h; sourceTree = "<group>"; };
+		9CFC2B211C2E978C0080714D /* TouchTrailCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchTrailCallback.h; sourceTree = "<group>"; };
 		A21787DC1BE9FE6C001A0050 /* API.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = API.cpp; sourceTree = "<group>"; };
 		A21787DD1BE9FE6C001A0050 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		A223D8581BFC6A73002AC32C /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
@@ -436,6 +443,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9CFC2B1A1C2E95880080714D /* lib */,
 				A2954A441C292436000BB60D /* AppDelegate.cpp */,
 				A2954A451C292436000BB60D /* AppDelegate.h */,
 				A2954A3E1C28F28D000BB60D /* GameScene.cpp */,
@@ -483,6 +491,18 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		9CFC2B1A1C2E95880080714D /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				9CFC2B211C2E978C0080714D /* TouchTrailCallback.h */,
+				9CFC2B1E1C2E97070080714D /* TouchTrailLayer.cpp */,
+				9CFC2B1F1C2E97070080714D /* TouchTrailLayer.h */,
+				9CFC2B1B1C2E95960080714D /* CCBlade.cpp */,
+				9CFC2B1C1C2E95960080714D /* CCBlade.h */,
+			);
+			name = lib;
+			sourceTree = "<group>";
 		};
 		A29549E71C28EEBD000BB60D /* animation */ = {
 			isa = PBXGroup;
@@ -748,7 +768,9 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				A2954A401C28F28D000BB60D /* GameScene.cpp in Sources */,
 				A2B225C21C2D1711000083DF /* Stone.cpp in Sources */,
+				9CFC2B201C2E97070080714D /* TouchTrailLayer.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				9CFC2B1D1C2E95960080714D /* CCBlade.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

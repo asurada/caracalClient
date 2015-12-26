@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/GameScene.cpp"
-            timestampString = "470399989.315905"
+            filePath = "../Classes/TouchTrailLayer.cpp"
+            timestampString = "472823346.565598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "GameScene::initEnv()"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "TouchTrailLayer::onTouchesMoved(const std::vector&lt;cocos2d::Touch*&gt;&amp; pTouches, Event *pEvent)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/GameScene.cpp"
-            timestampString = "470399989.315905"
+            filePath = "../Classes/TouchTrailLayer.cpp"
+            timestampString = "472823346.565598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "GameScene::onTouchBegan(Touch* touch, Event* event)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "TouchTrailLayer::onTouchesBegan(const std::vector&lt;cocos2d::Touch*&gt;&amp; pTouches, Event *pEvent)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,45 +41,125 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/GameScene.cpp"
-            timestampString = "470399989.315905"
+            filePath = "../Classes/TouchTrailLayer.cpp"
+            timestampString = "472823379.622215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "GameScene::onTouchBegan(Touch* touch, Event* event)"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "TouchTrailLayer::onTouchesMoved(const std::vector&lt;cocos2d::Touch*&gt;&amp; pTouches, Event *pEvent)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TouchTrailLayer::onTouchesMoved(std::__1::vector&lt;cocos2d::Touch*, std::__1::allocator&lt;cocos2d::Touch*&gt; &gt; const&amp;, cocos2d::Event*)"
+                  moduleName = "caracalClient-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asurada/projects/Caracal/Client/caracalClient/Classes/TouchTrailLayer.cpp"
+                  timestampString = "472824415.158634"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TouchTrailLayer::onTouchesMoved(std::__1::vector&lt;cocos2d::Touch*, std::__1::allocator&lt;cocos2d::Touch*&gt; &gt; const&amp;, cocos2d::Event*)"
+                  moduleName = "caracalClient-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asurada/projects/Caracal/Client/caracalClient/Classes/TouchTrailLayer.cpp"
+                  timestampString = "472824415.158983"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "304">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/TouchTrailLayer.cpp"
+            timestampString = "472823381.400172"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "TouchTrailLayer::onTouchesBegan(const std::vector&lt;cocos2d::Touch*&gt;&amp; pTouches, Event *pEvent)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Stone.cpp"
-            timestampString = "472803479.813011"
+            filePath = "../Classes/TouchTrailLayer.cpp"
+            timestampString = "472823382.210174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "Stone::create(const std::string&amp; name)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "TouchTrailLayer::onTouchesBegan(const std::vector&lt;cocos2d::Touch*&gt;&amp; pTouches, Event *pEvent)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TouchTrailLayer::onTouchesBegan(std::__1::vector&lt;cocos2d::Touch*, std::__1::allocator&lt;cocos2d::Touch*&gt; &gt; const&amp;, cocos2d::Event*)"
+                  moduleName = "caracalClient-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asurada/projects/Caracal/Client/caracalClient/Classes/TouchTrailLayer.cpp"
+                  timestampString = "472824415.161942"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TouchTrailLayer::onTouchesBegan(std::__1::vector&lt;cocos2d::Touch*, std::__1::allocator&lt;cocos2d::Touch*&gt; &gt; const&amp;, cocos2d::Event*)"
+                  moduleName = "caracalClient-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asurada/projects/Caracal/Client/caracalClient/Classes/TouchTrailLayer.cpp"
+                  timestampString = "472824415.162169"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "584">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/OperationLayer.cpp"
-            timestampString = "472813480.783755"
+            filePath = "../Classes/TouchTrailLayer.cpp"
+            timestampString = "472823397.29651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "OperationLayer::addEvents()"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "TouchTrailLayer::onTouchesEnded(const std::vector&lt;cocos2d::Touch*&gt;&amp; pTouches, Event *pEvent)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
