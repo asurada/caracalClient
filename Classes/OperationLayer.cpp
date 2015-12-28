@@ -67,8 +67,6 @@ void OperationLayer::onTouchMoved(Touch *touch, Event *pEvent)
         brush = adjustBrush(brush,p);
     }
     CCLOG("onTouchMoved x:%f,y:%f",p.x,p.y);
-
-    
 }
 
 void OperationLayer::onTouchEnded(Touch *touch, Event *pEvent)
@@ -294,8 +292,8 @@ void OperationLayer::addEvents()
 }
 
 
-Sprite* OperationLayer::addBrush(Point point){
-    Sprite *brush = Sprite::create("brush.png");
+Brush* OperationLayer::addBrush(Point point){
+    Brush *brush = Brush::create("brush.png");
     brush->setAnchorPoint(Vec2(0,0.5));//image height/2
     brush->setPosition(point);
     brush->setOpacity(225);
@@ -309,7 +307,7 @@ Sprite* OperationLayer::addBrush(Point point){
 
 
 
-Sprite* OperationLayer::adjustBrush(Sprite* brush,const Vec2& end){
+Brush* OperationLayer::adjustBrush(Brush* brush,const Vec2& end){
     if(brush == NULL) return brush;
     if(end.isZero())return brush;
     float dist = end.getDistance(brush->getPosition());

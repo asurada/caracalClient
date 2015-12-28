@@ -61,6 +61,7 @@
 		A21787DE1BE9FE6C001A0050 /* API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A21787DC1BE9FE6C001A0050 /* API.cpp */; };
 		A223D8591BFC6A73002AC32C /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = A223D8581BFC6A73002AC32C /* ball.png */; };
 		A223D85B1BFC6A82002AC32C /* ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = A223D85A1BFC6A82002AC32C /* ball-hd.png */; };
+		A260C72B1C31160500069D87 /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A260C7291C31160500069D87 /* Brush.cpp */; };
 		A2954A151C28EEBD000BB60D /* fire.plist in Resources */ = {isa = PBXBuildFile; fileRef = A29549E81C28EEBD000BB60D /* fire.plist */; };
 		A2954A161C28EEBD000BB60D /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = A29549E91C28EEBD000BB60D /* fire.png */; };
 		A2954A171C28EEBD000BB60D /* fire2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A29549EA1C28EEBD000BB60D /* fire2.plist */; };
@@ -213,6 +214,8 @@
 		A21787DD1BE9FE6C001A0050 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		A223D8581BFC6A73002AC32C /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 		A223D85A1BFC6A82002AC32C /* ball-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ball-hd.png"; sourceTree = "<group>"; };
+		A260C7291C31160500069D87 /* Brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Brush.cpp; sourceTree = "<group>"; };
+		A260C72A1C31160500069D87 /* Brush.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Brush.hpp; sourceTree = "<group>"; };
 		A29549E81C28EEBD000BB60D /* fire.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fire.plist; sourceTree = "<group>"; };
 		A29549E91C28EEBD000BB60D /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
 		A29549EA1C28EEBD000BB60D /* fire2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fire2.plist; sourceTree = "<group>"; };
@@ -460,6 +463,8 @@
 				A2B225C11C2D1711000083DF /* Stone.hpp */,
 				A2B225C31C2D276F000083DF /* Monster.cpp */,
 				A2B225C41C2D276F000083DF /* Monster.hpp */,
+				A260C7291C31160500069D87 /* Brush.cpp */,
+				A260C72A1C31160500069D87 /* Brush.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -769,6 +774,7 @@
 				A2954A401C28F28D000BB60D /* GameScene.cpp in Sources */,
 				A2B225C21C2D1711000083DF /* Stone.cpp in Sources */,
 				9CFC2B201C2E97070080714D /* TouchTrailLayer.cpp in Sources */,
+				A260C72B1C31160500069D87 /* Brush.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				9CFC2B1D1C2E95960080714D /* CCBlade.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,

@@ -29,11 +29,11 @@
 USING_NS_CC;
 
 
-#define POINT_LIMIT_MIN 3
+#define POINT_LIMIT_MIN 10
 
 #define DISTANCE_TO_INTERPOLATE 15
 
-#define DELETE_START_LIMIT 0
+#define DELETE_START_LIMIT 2
 
 static inline CGPoint_x cgpSub(const CGPoint_x& v1, const CGPoint_x& v2)
 {

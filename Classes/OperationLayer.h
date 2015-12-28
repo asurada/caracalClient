@@ -12,6 +12,7 @@
 #include "TouchTrailLayer.h"
 #include <stdio.h>
 #include "cocos2d.h"
+#include "Brush.hpp"
 USING_NS_CC;
 using namespace cocos2d::ui;
 
@@ -27,18 +28,18 @@ public:
 private:
     OperationLayer();
     ~OperationLayer();
-    Sprite *brush;
+    Brush *brush;
     Stone* preStone;
     Layer * marklayer;
     Label* myLabel;
    
     void addEvents();
-    Sprite* addBrush(Point point);
+    Brush* addBrush(Point point);
     Vector<Stone*> stones;
-    Vector<Sprite*> brushes;
+    Vector<Brush*> brushes;
     Vector<String*> order;
     TouchTrailLayer *_touchTrailLayer;
-    Sprite* adjustBrush(Sprite* brush,const Vec2& end);
+    Brush* adjustBrush(Brush* brush,const Vec2& end);
     void initOptions();
     bool onTouchBegan(Touch* touch, Event* event);
     void onTouchEnded(Touch* touch, Event* event);
