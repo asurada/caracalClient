@@ -58,6 +58,8 @@
 		9CFC2B191C2E8C910080714D /* myFont.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CFC2B181C2E8C910080714D /* myFont.png */; };
 		9CFC2B1D1C2E95960080714D /* CCBlade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC2B1B1C2E95960080714D /* CCBlade.cpp */; };
 		9CFC2B201C2E97070080714D /* TouchTrailLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC2B1E1C2E97070080714D /* TouchTrailLayer.cpp */; };
+		A20FD3DA1C3E4DEA00938236 /* HUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A20FD3D81C3E4DEA00938236 /* HUDLayer.cpp */; };
+		A20FD3DC1C3E5F8700938236 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A20FD3DB1C3E5F8700938236 /* bg.jpg */; };
 		A21787DE1BE9FE6C001A0050 /* API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A21787DC1BE9FE6C001A0050 /* API.cpp */; };
 		A223D8591BFC6A73002AC32C /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = A223D8581BFC6A73002AC32C /* ball.png */; };
 		A223D85B1BFC6A82002AC32C /* ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = A223D85A1BFC6A82002AC32C /* ball-hd.png */; };
@@ -210,6 +212,9 @@
 		9CFC2B1E1C2E97070080714D /* TouchTrailLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchTrailLayer.cpp; sourceTree = "<group>"; };
 		9CFC2B1F1C2E97070080714D /* TouchTrailLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchTrailLayer.h; sourceTree = "<group>"; };
 		9CFC2B211C2E978C0080714D /* TouchTrailCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchTrailCallback.h; sourceTree = "<group>"; };
+		A20FD3D81C3E4DEA00938236 /* HUDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HUDLayer.cpp; sourceTree = "<group>"; };
+		A20FD3D91C3E4DEA00938236 /* HUDLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HUDLayer.hpp; sourceTree = "<group>"; };
+		A20FD3DB1C3E5F8700938236 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		A21787DC1BE9FE6C001A0050 /* API.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = API.cpp; sourceTree = "<group>"; };
 		A21787DD1BE9FE6C001A0050 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		A223D8581BFC6A73002AC32C /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
@@ -465,6 +470,8 @@
 				A2B225C41C2D276F000083DF /* Monster.hpp */,
 				A260C7291C31160500069D87 /* Brush.cpp */,
 				A260C72A1C31160500069D87 /* Brush.hpp */,
+				A20FD3D81C3E4DEA00938236 /* HUDLayer.cpp */,
+				A20FD3D91C3E4DEA00938236 /* HUDLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -532,6 +539,7 @@
 		A29549FC1C28EEBD000BB60D /* image */ = {
 			isa = PBXGroup;
 			children = (
+				A20FD3DB1C3E5F8700938236 /* bg.jpg */,
 				A29549FD1C28EEBD000BB60D /* ball.png */,
 				A29549FE1C28EEBD000BB60D /* bg@2x.png */,
 				A29549FF1C28EEBD000BB60D /* bll_01.png */,
@@ -738,6 +746,7 @@
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				A2FC98B71C1032E7004E6FFD /* Button_Disable.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
+				A20FD3DC1C3E5F8700938236 /* bg.jpg in Resources */,
 				A2954A1C1C28EEBD000BB60D /* attack_2.png in Resources */,
 				A2954A211C28EEBD000BB60D /* attack_5.plist in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
@@ -766,6 +775,7 @@
 			files = (
 				A2B225C51C2D276F000083DF /* Monster.cpp in Sources */,
 				A21787DE1BE9FE6C001A0050 /* API.cpp in Sources */,
+				A20FD3DA1C3E4DEA00938236 /* HUDLayer.cpp in Sources */,
 				A2DD09E31BEC92370048B722 /* Socket.cpp in Sources */,
 				A2954A461C292436000BB60D /* AppDelegate.cpp in Sources */,
 				A2DD09E61BEC92D80048B722 /* SocketTestScene.cpp in Sources */,

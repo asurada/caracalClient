@@ -10,6 +10,7 @@
 #include "Stone.hpp"
 #include "Monster.hpp"
 #include "ui/CocosGUI.h"
+#include "HUDLayer.hpp"
 
 OperationLayer::OperationLayer()
 {
@@ -125,8 +126,6 @@ OperationLayer* OperationLayer::create()
 void OperationLayer::initOptions()
 {
     
-
-    
     myLabel = Label::createWithBMFont("myFont.fnt", "Your Text");
     myLabel->setPosition(Point(180,208));
     this->addChild(myLabel);
@@ -140,13 +139,17 @@ void OperationLayer::initOptions()
             case ui::Widget::TouchEventType::BEGAN:
                 break;
             case ui::Widget::TouchEventType::ENDED:
-                for (Sprite*  brush : brushes) {
-                    brush->removeFromParentAndCleanup(true);
-                }
-                brushes.clear();
-                break;
+//                for (Sprite*  brush : brushes) {
+//                    brush->removeFromParentAndCleanup(true);
+//                }
+//                brushes.clear();
+               //HUDLayer *layer2 = HUDLayer::create();
+               // CC_BREAK_IF(! layer2);
+               // add the layers as a child to scene
+               this->addChild(HUDLayer::create(), 5);
+               break;
             default:
-                break;
+               break;
         }
     });
     button->setPosition(Point(230,278));
