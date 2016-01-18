@@ -30,7 +30,9 @@ public:
     void onTouchMoved(Touch* touch, Event* event);
     void onTouchCancelled(Touch* touch, Event* event);
     void initOptions();
-    Stone();
+    void skillInvoke();
+    void magicInvoke();
+    Stone()
     ~Stone();
 
 };

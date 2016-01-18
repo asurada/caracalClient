@@ -19,6 +19,8 @@ private:
 public:
     virtual void init(const char *pName) =0;
     static Monster* create(const std::string& name);
-    
+    void invokeSkill();
+    void invokeMagic();
+    void revolve();
 };
 #endif /* Monster_hpp */
