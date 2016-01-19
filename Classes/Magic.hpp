@@ -15,7 +15,7 @@
 class Magic{
 private:
     int force;
-    int defense;
+    int defend;
     
 public:
     void magicInvoke();

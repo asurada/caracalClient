@@ -10,6 +10,7 @@
 #define Stone_hpp
 
 #include <stdio.h>
+#include "StoneDelegate.hpp"
 
 USING_NS_CC;
 
@@ -20,7 +21,7 @@ private:
     void addEvents();
     int magicValue;
     
-    
+    StoneDelegate* stoneDelegate;
     //return initWithTexture(nullptr, Rect::ZERO );
     
 public:

@@ -9,6 +9,8 @@
 #ifndef MonsterDelegate_hpp
 #define MonsterDelegate_hpp
 
+#include <stdio.h>
+
 class MonsterDelegate
 {
 public:

@@ -109,6 +109,7 @@
 		A2954A461C292436000BB60D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2954A441C292436000BB60D /* AppDelegate.cpp */; };
 		A29C88761C4DE42F00B7FEB3 /* Magic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29C88741C4DE42F00B7FEB3 /* Magic.cpp */; };
 		A29C88791C4E3B4C00B7FEB3 /* MonsterDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29C88771C4E3B4C00B7FEB3 /* MonsterDelegate.cpp */; };
+		A29C887C1C4E429200B7FEB3 /* StoneDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29C887A1C4E429200B7FEB3 /* StoneDelegate.cpp */; };
 		A2B225C21C2D1711000083DF /* Stone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2B225C01C2D1711000083DF /* Stone.cpp */; };
 		A2B225C51C2D276F000083DF /* Monster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2B225C31C2D276F000083DF /* Monster.cpp */; };
 		A2DD09E31BEC92370048B722 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DD09E11BEC92370048B722 /* Socket.cpp */; };
@@ -272,6 +273,8 @@
 		A29C88751C4DE42F00B7FEB3 /* Magic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Magic.hpp; sourceTree = "<group>"; };
 		A29C88771C4E3B4C00B7FEB3 /* MonsterDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MonsterDelegate.cpp; sourceTree = "<group>"; };
 		A29C88781C4E3B4C00B7FEB3 /* MonsterDelegate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MonsterDelegate.hpp; sourceTree = "<group>"; };
+		A29C887A1C4E429200B7FEB3 /* StoneDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StoneDelegate.cpp; sourceTree = "<group>"; };
+		A29C887B1C4E429200B7FEB3 /* StoneDelegate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StoneDelegate.hpp; sourceTree = "<group>"; };
 		A2B225C01C2D1711000083DF /* Stone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stone.cpp; sourceTree = "<group>"; };
 		A2B225C11C2D1711000083DF /* Stone.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Stone.hpp; sourceTree = "<group>"; };
 		A2B225C31C2D276F000083DF /* Monster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Monster.cpp; sourceTree = "<group>"; };
@@ -482,6 +485,8 @@
 				A20FD3D91C3E4DEA00938236 /* HUDLayer.hpp */,
 				A29C88771C4E3B4C00B7FEB3 /* MonsterDelegate.cpp */,
 				A29C88781C4E3B4C00B7FEB3 /* MonsterDelegate.hpp */,
+				A29C887A1C4E429200B7FEB3 /* StoneDelegate.cpp */,
+				A29C887B1C4E429200B7FEB3 /* StoneDelegate.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -795,6 +800,7 @@
 				A29C88791C4E3B4C00B7FEB3 /* MonsterDelegate.cpp in Sources */,
 				A2B225C21C2D1711000083DF /* Stone.cpp in Sources */,
 				9CFC2B201C2E97070080714D /* TouchTrailLayer.cpp in Sources */,
+				A29C887C1C4E429200B7FEB3 /* StoneDelegate.cpp in Sources */,
 				A29C88761C4DE42F00B7FEB3 /* Magic.cpp in Sources */,
 				A260C72B1C31160500069D87 /* Brush.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,

@@ -13,6 +13,7 @@
 
 #include "Stone.hpp"
 #include "Magic.hpp"
+#include "MonsterDelegate.hpp"
 
 USING_NS_CC;
 
@@ -29,6 +30,7 @@ private:
     int strengthValue;   //physiceSkill
     int defenseValue;    //defense
     int revolutionValue; //revolution
+    MonsterDelegate* monsterDelegate;
     
 public:
     virtual void init(const char *pName) =0;
