@@ -10,17 +10,35 @@
 #define Monster_hpp
 
 #include <stdio.h>
-USING_NS_CC;
 
+#include "Stone.hpp"
+#include "Magic.hpp"
+
+USING_NS_CC;
 
 class Monster :public cocos2d::Sprite{
 private:
     typedef Sprite super;
+    Vector<Stone *> stones;
+    Vector<Magic *>  magics;
+    Magic* currentMagic;
+    Monster* enemy;
+    
+    int hpValue;
+    int magicValue;      //magicSkill
+    int strengthValue;   //physiceSkill
+    int defenseValue;    //defense
+    int revolutionValue; //revolution
+    
 public:
     virtual void init(const char *pName) =0;
     static Monster* create(const std::string& name);
-    void invokeSkill();
     void invokeMagic();
     void revolve();
+    void attack();
+    void defend();
+    int updateHp(int value);
+    Magic* judgeMagic(Vector<String*> magics);
+    
 };
 #endif /* Monster_hpp */

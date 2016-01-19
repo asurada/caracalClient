@@ -18,6 +18,7 @@ class Stone :public cocos2d::Sprite{
 private:
     typedef Sprite super;
     void addEvents();
+    int magicValue;
     
     
     //return initWithTexture(nullptr, Rect::ZERO );
@@ -30,9 +31,9 @@ public:
     void onTouchMoved(Touch* touch, Event* event);
     void onTouchCancelled(Touch* touch, Event* event);
     void initOptions();
-    void skillInvoke();
-    void magicInvoke();
-    Stone()
+    
+    void invokeMagic();
+    Stone();
     ~Stone();
 
 };
