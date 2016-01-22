@@ -17,7 +17,7 @@
 
 USING_NS_CC;
 
-class Monster :public cocos2d::Sprite{
+class Monster :public cocos2d::Sprite,StoneDelegate{
 private:
     typedef Sprite super;
     Vector<Stone *> stones;
@@ -33,13 +33,15 @@ private:
     MonsterDelegate* monsterDelegate;
     
 public:
-    virtual void init(const char *pName) =0;
+    //virtual void init(const char *pName) =0;
     static Monster* create(const std::string& name);
     void invokeMagic();
     void revolve();
     void attack();
     void defend();
+    void setDelegate(MonsterDelegate*  delegate);
     int updateHp(int value);
+    
     Magic* judgeMagic(Vector<String*> magics);
     
 };

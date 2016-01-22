@@ -78,6 +78,7 @@ bool Stone::onTouchBegan(Touch *touch, Event *pEvent)
 {
     
     CCLOG("onTouchBegan Stone");
+    //stoneDelegate->stoneAttck();
     return true;
 }
 
@@ -95,4 +96,12 @@ void Stone::onTouchEnded(Touch *touch, Event *pEvent)
 
 void Stone::onTouchCancelled(Touch* touch, Event* event){
     CCLOG("onTouchCancelled");
+}
+
+void Stone::setStoneDelegate(StoneDelegate* delegate){
+    stoneDelegate = delegate;
+}
+
+void Stone::invokeMagic(){
+    
 }

@@ -15,6 +15,8 @@ class StoneDelegate
 {
 public:
     virtual void magic() = 0;
+    virtual void stoneAttck() = 0;
+
     
 };
 

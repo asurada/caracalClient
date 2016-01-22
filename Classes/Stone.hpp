@@ -34,6 +34,7 @@ public:
     void initOptions();
     
     void invokeMagic();
+    void setStoneDelegate(StoneDelegate* stoneDelegate);
     Stone();
     ~Stone();
 
