@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "Brush.hpp"
+#include "Monster.hpp"
 USING_NS_CC;
 using namespace cocos2d::ui;
 
@@ -32,12 +33,13 @@ private:
     Stone* preStone;
     Layer * marklayer;
     Label* myLabel;
-   
+    Monster * monsterObject;
+    
     void addEvents();
     Brush* addBrush(Point point);
     Vector<Stone*> stones;
     Vector<Brush*> brushes;
-    Vector<String*> order;
+    std::vector<int> order;
     TouchTrailLayer *_touchTrailLayer;
     Brush* adjustBrush(Brush* brush,const Vec2& end);
     void initOptions();

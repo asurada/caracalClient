@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "StoneDelegate.hpp"
 
+
 USING_NS_CC;
 
 
@@ -35,6 +36,7 @@ public:
     
     void invokeMagic();
     void setStoneDelegate(StoneDelegate* stoneDelegate);
+
     Stone();
     ~Stone();
 

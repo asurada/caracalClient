@@ -23,6 +23,7 @@ OperationLayer::OperationLayer()
 
 OperationLayer::~OperationLayer(){
     CCLOG("release");
+    stones.clear();
 }
 
 
@@ -78,12 +79,15 @@ void OperationLayer::onTouchEnded(Touch *touch, Event *pEvent)
         brush->removeFromParentAndCleanup(true);
         brush = NULL;
     }
-    String* strOrder = String::create("");
-    for (String* str:order) {
-        strOrder = String::createWithFormat("%s\n%s",strOrder->getCString(),str->getCString());
+    std::string strOrder = "";
+
+    for (int str:order) {
+        strOrder = StringUtils::format("%s\n%d",strOrder.c_str(),str);
     }
+    Magic* magic = monsterObject->judgeMagic(order);
+    
     order.clear();
-    myLabel->setString(strOrder->getCString());
+    myLabel->setString(strOrder.c_str());
     
 
 }
@@ -154,46 +158,47 @@ void OperationLayer::initOptions()
     });
     button->setPosition(Point(230,278));
     this->addChild(button);
-    
+
+    monsterObject  = Monster::create("monster.png");
 
     Stone * stoneObject  = Stone::create("bll_02.png");
-    stoneObject->setPosition(Point(230,200));
+    stoneObject->setPosition(Point(330,94));
     this->addChild(stoneObject);
     stoneObject->setTag(1);
-    stones.pushBack(stoneObject);
+    monsterObject->addStone(stoneObject);
     
     stoneObject  = Stone::create("bll_02.png");
     stoneObject->setPosition(Point(230,148));
     this->addChild(stoneObject);
     stoneObject->setTag(2);
-    stones.pushBack(stoneObject);
+    monsterObject->addStone(stoneObject);
     
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(230,40));
     this->addChild(stoneObject);
     stoneObject->setTag(3);
-    stones.pushBack(stoneObject);
+    monsterObject->addStone(stoneObject);
     
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(170,94));
     this->addChild(stoneObject);
     stoneObject->setTag(4);
-    stones.pushBack(stoneObject);
+    monsterObject->addStone(stoneObject);
     
-    stoneObject  =  Stone::create("bll_02.png");
-    stoneObject->setPosition(Point(309,94));
-    this->addChild(stoneObject);
-    stoneObject->setTag(5);
-    stones.pushBack(stoneObject);
+//    stoneObject  =  Stone::create("bll_02.png");
+//    stoneObject->setPosition(Point(309,94));
+//    this->addChild(stoneObject);
+//    stoneObject->setTag(5);
+//    stones.pushBack(stoneObject);
+//    
+//    stoneObject  =  Stone::create("bll_02.png");
+//    stoneObject->setPosition(Point(290,100));
+//    this->addChild(stoneObject);
+//    stoneObject->setTag(6);
+//    stones.pushBack(stoneObject);
     
-    stoneObject  =  Stone::create("bll_02.png");
-    stoneObject->setPosition(Point(290,100));
-    this->addChild(stoneObject);
-    stoneObject->setTag(6);
-    stones.pushBack(stoneObject);
+    //monsterObject->setStone(stones);
     
-    
-    Monster * monsterObject  = Monster::create("monster.png");
     monsterObject->setPosition(Point(230,94));
     this->addChild(monsterObject);
     
@@ -250,7 +255,8 @@ void OperationLayer::addEvents()
                     if(brush == NULL)return;
                     if(preStone == stone)return;
                     brush->setTag(1);
-                    order.pushBack(String::createWithFormat("(%d,%d)",preStone->getTag(),stone->getTag()));
+                    //order.push_back(StringUtils::format("(%d,%d)",preStone->getTag(),stone->getTag()));
+                    order.push_back(stone->getTag());
                     CCLOG("stone(%d,%d)",preStone->getTag(),stone->getTag());
                     brush = adjustBrush(brush,stone->getPosition());
                     brushes.pushBack(brush);
@@ -357,5 +363,7 @@ void OperationLayer::onPopLast(Point point){
 void OperationLayer::onPopStop(){
     
 }
+
+
 
 
