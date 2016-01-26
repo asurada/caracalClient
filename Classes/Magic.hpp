@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 
-class Magic{
+class Magic :public cocos2d::Ref {
 private:
     int _effectId;
     int _force;

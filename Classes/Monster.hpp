@@ -37,8 +37,7 @@ enum magic_type
 class Monster :public cocos2d::Sprite,StoneDelegate{
 private:
     typedef Sprite super;
-    Vector<Stone*> stones;
-    Vector<Magic*> magics;
+
     Magic* currentMagic;
     Monster* enemy;
     
@@ -62,6 +61,11 @@ public:
     int updateHp(int value);
     void setStone(Vector<Stone*> _stones);
     Magic* judgeMagic(std::vector<int> magics);
+//    Vector<Stone*> stones;
+//    Vector<Magic*> magics;
+    
+    std::shared_ptr<Vector<Stone*>>  stones;/// = std::make_shared<Vector<Sprite*>>();  //default constructor
+    //std::shared_ptr<Vector<Magic*>>  magics;
     
     Monster();
     ~Monster();
