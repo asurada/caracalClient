@@ -14,6 +14,7 @@
 
 OperationLayer::OperationLayer()
 {
+    
 //    magicSprites = CCArray::create();
 //    magicSprites->retain();
 //    magicMarks->retain();
@@ -23,7 +24,8 @@ OperationLayer::OperationLayer()
 
 OperationLayer::~OperationLayer(){
     CCLOG("release");
-    stones.clear();
+    monsterObject->stones.clear();
+    delete monsterObject;
 }
 
 
@@ -162,27 +164,27 @@ void OperationLayer::initOptions()
     monsterObject  = Monster::create("monster.png");
 
     Stone * stoneObject  = Stone::create("bll_02.png");
-    stoneObject->setPosition(Point(330,94));
+    stoneObject->setPosition(Point(300,94));
     this->addChild(stoneObject);
-    stoneObject->setTag(1);
+    stoneObject->setTag(3);
     monsterObject->addStone(stoneObject);
     
     stoneObject  = Stone::create("bll_02.png");
     stoneObject->setPosition(Point(230,148));
     this->addChild(stoneObject);
-    stoneObject->setTag(2);
+    stoneObject->setTag(4);
     monsterObject->addStone(stoneObject);
     
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(230,40));
     this->addChild(stoneObject);
-    stoneObject->setTag(3);
+    stoneObject->setTag(2);
     monsterObject->addStone(stoneObject);
     
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(170,94));
     this->addChild(stoneObject);
-    stoneObject->setTag(4);
+    stoneObject->setTag(1);
     monsterObject->addStone(stoneObject);
     
 //    stoneObject  =  Stone::create("bll_02.png");
@@ -222,7 +224,7 @@ void OperationLayer::addEvents()
         {
             OperationLayer::onTouchBegan(touch,event);
             _touchTrailLayer->onTouchBegan(touch, event);
-            for (auto stone : stones){
+            for (auto stone : monsterObject->stones){
                 cocos2d::Rect rect = stone->getBoundingBox();
                 if(rect.containsPoint(p)){
                     preStone = stone;
@@ -249,7 +251,7 @@ void OperationLayer::addEvents()
         {
             OperationLayer::onTouchMoved(touch,event);
             _touchTrailLayer->onTouchMoved(touch, event);
-             for (auto stone : stones){
+             for (auto stone : monsterObject->stones){
                 cocos2d::Rect rect = stone->getBoundingBox();
                 if(rect.containsPoint(p)){
                     if(brush == NULL)return;
@@ -278,7 +280,7 @@ void OperationLayer::addEvents()
         {
             OperationLayer::onTouchEnded(touch,event);
             _touchTrailLayer->onTouchEnded(touch, event);
-            for (auto stone : stones){
+            for (auto stone : monsterObject->stones){
                 cocos2d::Rect rect = stone->getBoundingBox();
                 if(rect.containsPoint(p)){
                     brush = adjustBrush(brush,stone->getPosition());

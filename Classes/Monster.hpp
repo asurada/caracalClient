@@ -43,7 +43,7 @@ private:
     
     int hpValue;
     int magicValue;      //magicSkill
-    int strengthValue;   //physiceSkill
+    int strengthValue;   //physicsSkill
     int defenseValue;    //defense
     int revolutionValue; //revolution
     MonsterDelegate* monsterDelegate;
@@ -64,7 +64,7 @@ public:
 //    Vector<Stone*> stones;
 //    Vector<Magic*> magics;
     
-    std::shared_ptr<Vector<Stone*>>  stones;/// = std::make_shared<Vector<Sprite*>>();  //default constructor
+    std::vector<Stone *>  stones;/// = std::make_shared<Vector<Sprite*>>();  //default constructor
     //std::shared_ptr<Vector<Magic*>>  magics;
     
     Monster();

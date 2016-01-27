@@ -8,8 +8,6 @@
 
 #include "Monster.hpp"
 
-
-
 Monster* Monster::create(const std::string& name){
     return (Monster*)super::create(name);
 }
@@ -44,7 +42,7 @@ Magic* Monster::judgeMagic(std::vector<int> magics){
     }
     CCLOG("%s",strSeq.c_str());
     int result = getMagicType(strSeq);
-    
+    CCLOG("magic :%d",result);
     return NULL;
 }
 
@@ -56,17 +54,17 @@ void StoneDelegate::stoneAttck(){
 void Monster::addStone(Stone* _stones){
   
     //stones = _stones;
-    stones->pushBack(_stones);
-    //    if(stones.size() >0){
-    //        stones.clear();
-    //    }
+    stones.push_back(_stones);
+    // if(stones.size() >0){
+    //     stones.clear();
+    // }
     //stones.pushBack(_stones);
 }
 
 
 void Monster::setStone(Vector<Stone*> _stones){
-  //  stones = _stones;
- //    stones.pushBack(_stones);
+//    stones = _stones;
+//    stones.pushBack(_stones);
 //    if(stones.size() >0){
 //        stones.clear();
 //    }
@@ -207,12 +205,13 @@ magic_type Monster::getMagicType(std::string magic){
 }
 
 Monster::Monster(){
-    stones = std::make_shared<Vector<Stone*>>();
+  
+  // stones = std::make_shared<Vector<Stone*>>();
    // magics = std::make_shared<Vector<Magic*>>();
     //stones = *new Vector<Stone*>();
 }
 
 Monster::~Monster(){
-    
+
     
 }

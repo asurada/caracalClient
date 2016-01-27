@@ -37,7 +37,7 @@ private:
     
     void addEvents();
     Brush* addBrush(Point point);
-    Vector<Stone*> stones;
+//  Vector<Stone*> stones;
     Vector<Brush*> brushes;
     std::vector<int> order;
     TouchTrailLayer *_touchTrailLayer;
