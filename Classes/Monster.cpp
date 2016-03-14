@@ -51,25 +51,26 @@ void StoneDelegate::stoneAttck(){
     
 }
 
-void Monster::addStone(Stone* _stones){
+void Monster::addStone(Stone* _stone){
   
     //stones = _stones;
-    stones.push_back(_stones);
+    stones.push_back(_stone);
+
     // if(stones.size() >0){
     //     stones.clear();
     // }
-    //stones.pushBack(_stones);
+    //stones.pushBack(_stone);
 }
 
 
-void Monster::setStone(Vector<Stone*> _stones){
-//    stones = _stones;
-//    stones.pushBack(_stones);
-//    if(stones.size() >0){
-//        stones.clear();
-//    }
-//    stones.pushBack(_stones);
-}
+//void Monster::setStone(Vector<Stone> _stones){
+////    stones = _stones;
+////    stones.pushBack(_stones);
+////    if(stones.size() >0){
+////        stones.clear();
+////    }
+////    stones.pushBack(_stones);
+//}
 
 
 magic_type Monster::getMagicType(std::string magic){

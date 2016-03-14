@@ -59,12 +59,12 @@ public:
     void addStone(Stone* _stones);
     void setDelegate(MonsterDelegate*  delegate);
     int updateHp(int value);
-    void setStone(Vector<Stone*> _stones);
+  //  void setStone(Vector<Stone> _stones);
     Magic* judgeMagic(std::vector<int> magics);
 //    Vector<Stone*> stones;
 //    Vector<Magic*> magics;
     
-    std::vector<Stone *>  stones;/// = std::make_shared<Vector<Sprite*>>();  //default constructor
+    std::vector<Stone*>  stones;/// = std::make_shared<Vector<Sprite*>>();  //default constructor
     //std::shared_ptr<Vector<Magic*>>  magics;
     
     Monster();

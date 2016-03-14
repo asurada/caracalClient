@@ -121,7 +121,7 @@ OperationLayer* OperationLayer::create()
     {
         pSprite->autorelease();
         pSprite->initOptions();
-        pSprite->addEvents();
+//      pSprite->addEvents();
         return pSprite;
     }
     
@@ -167,43 +167,44 @@ void OperationLayer::initOptions()
     stoneObject->setPosition(Point(300,94));
     this->addChild(stoneObject);
     stoneObject->setTag(3);
-    monsterObject->addStone(stoneObject);
-    
+//    monsterObject->addStone(new Stone());
+  
+//
     stoneObject  = Stone::create("bll_02.png");
     stoneObject->setPosition(Point(230,148));
     this->addChild(stoneObject);
     stoneObject->setTag(4);
-    monsterObject->addStone(stoneObject);
-    
+//    monsterObject->addStone(stoneObject);
+//    
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(230,40));
     this->addChild(stoneObject);
     stoneObject->setTag(2);
-    monsterObject->addStone(stoneObject);
-    
+//    monsterObject->addStone(stoneObject);
+//
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(170,94));
     this->addChild(stoneObject);
     stoneObject->setTag(1);
-    monsterObject->addStone(stoneObject);
+//    monsterObject->addStone(stoneObject);
     
-//    stoneObject  =  Stone::create("bll_02.png");
-//    stoneObject->setPosition(Point(309,94));
-//    this->addChild(stoneObject);
-//    stoneObject->setTag(5);
+    stoneObject  =  Stone::create("bll_02.png");
+    stoneObject->setPosition(Point(309,94));
+    this->addChild(stoneObject);
+    stoneObject->setTag(5);
 //    stones.pushBack(stoneObject);
 //    
-//    stoneObject  =  Stone::create("bll_02.png");
-//    stoneObject->setPosition(Point(290,100));
-//    this->addChild(stoneObject);
-//    stoneObject->setTag(6);
+    stoneObject  =  Stone::create("bll_02.png");
+    stoneObject->setPosition(Point(290,100));
+    this->addChild(stoneObject);
+    stoneObject->setTag(6);
 //    stones.pushBack(stoneObject);
     
     //monsterObject->setStone(stones);
     
-    monsterObject->setPosition(Point(230,94));
-    this->addChild(monsterObject);
-    
+//    monsterObject->setPosition(Point(230,94));
+//    this->addChild(monsterObject);
+//    
     
     // do things here like setTag(), setPosition(), any custom logic.
 }

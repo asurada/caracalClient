@@ -161,10 +161,6 @@ void GameScene::initEnv(){
 //    _world->CreateJoint(&jointDefCopy);
 
 
-    
-
- 
-    
     auto touchListener = EventListenerTouchOneByOne::create();
     touchListener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
     touchListener->onTouchEnded = CC_CALLBACK_2(GameScene::onTouchEnded, this);
