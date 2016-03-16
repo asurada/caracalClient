@@ -58,6 +58,8 @@
 		9CFC2B191C2E8C910080714D /* myFont.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CFC2B181C2E8C910080714D /* myFont.png */; };
 		9CFC2B1D1C2E95960080714D /* CCBlade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC2B1B1C2E95960080714D /* CCBlade.cpp */; };
 		9CFC2B201C2E97070080714D /* TouchTrailLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC2B1E1C2E97070080714D /* TouchTrailLayer.cpp */; };
+		A20C0BC51C9952920080D0BC /* MonsterParam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A20C0BC31C9952920080D0BC /* MonsterParam.cpp */; };
+		A20C0BC81C995A100080D0BC /* MonsterLogic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A20C0BC61C995A100080D0BC /* MonsterLogic.cpp */; };
 		A20FD3DA1C3E4DEA00938236 /* HUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A20FD3D81C3E4DEA00938236 /* HUDLayer.cpp */; };
 		A20FD3DC1C3E5F8700938236 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A20FD3DB1C3E5F8700938236 /* bg.jpg */; };
 		A21787DE1BE9FE6C001A0050 /* API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A21787DC1BE9FE6C001A0050 /* API.cpp */; };
@@ -112,6 +114,7 @@
 		A29C887C1C4E429200B7FEB3 /* StoneDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29C887A1C4E429200B7FEB3 /* StoneDelegate.cpp */; };
 		A2B225C21C2D1711000083DF /* Stone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2B225C01C2D1711000083DF /* Stone.cpp */; };
 		A2B225C51C2D276F000083DF /* Monster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2B225C31C2D276F000083DF /* Monster.cpp */; };
+		A2D8E0581C96A57800E73DFD /* magnetLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2D8E0561C96A57800E73DFD /* magnetLayer.cpp */; };
 		A2DD09E31BEC92370048B722 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DD09E11BEC92370048B722 /* Socket.cpp */; };
 		A2DD09E61BEC92D80048B722 /* SocketTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DD09E41BEC92D80048B722 /* SocketTestScene.cpp */; };
 		A2E162541BE9F6E600CF27CA /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
@@ -215,6 +218,10 @@
 		9CFC2B1E1C2E97070080714D /* TouchTrailLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchTrailLayer.cpp; sourceTree = "<group>"; };
 		9CFC2B1F1C2E97070080714D /* TouchTrailLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchTrailLayer.h; sourceTree = "<group>"; };
 		9CFC2B211C2E978C0080714D /* TouchTrailCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchTrailCallback.h; sourceTree = "<group>"; };
+		A20C0BC31C9952920080D0BC /* MonsterParam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MonsterParam.cpp; sourceTree = "<group>"; };
+		A20C0BC41C9952920080D0BC /* MonsterParam.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MonsterParam.hpp; sourceTree = "<group>"; };
+		A20C0BC61C995A100080D0BC /* MonsterLogic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MonsterLogic.cpp; sourceTree = "<group>"; };
+		A20C0BC71C995A100080D0BC /* MonsterLogic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MonsterLogic.hpp; sourceTree = "<group>"; };
 		A20FD3D81C3E4DEA00938236 /* HUDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HUDLayer.cpp; sourceTree = "<group>"; };
 		A20FD3D91C3E4DEA00938236 /* HUDLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HUDLayer.hpp; sourceTree = "<group>"; };
 		A20FD3DB1C3E5F8700938236 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
@@ -279,6 +286,8 @@
 		A2B225C11C2D1711000083DF /* Stone.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Stone.hpp; sourceTree = "<group>"; };
 		A2B225C31C2D276F000083DF /* Monster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Monster.cpp; sourceTree = "<group>"; };
 		A2B225C41C2D276F000083DF /* Monster.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Monster.hpp; sourceTree = "<group>"; };
+		A2D8E0561C96A57800E73DFD /* magnetLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = magnetLayer.cpp; sourceTree = "<group>"; };
+		A2D8E0571C96A57800E73DFD /* magnetLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = magnetLayer.hpp; sourceTree = "<group>"; };
 		A2DD09E11BEC92370048B722 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
 		A2DD09E21BEC92370048B722 /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
 		A2DD09E41BEC92D80048B722 /* SocketTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketTestScene.cpp; sourceTree = "<group>"; };
@@ -460,6 +469,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A20C0BC91C995BCD0080D0BC /* monster */,
 				9CFC2B1A1C2E95880080714D /* lib */,
 				A2954A441C292436000BB60D /* AppDelegate.cpp */,
 				A2954A451C292436000BB60D /* AppDelegate.h */,
@@ -477,8 +487,6 @@
 				A2B225C11C2D1711000083DF /* Stone.hpp */,
 				A29C88741C4DE42F00B7FEB3 /* Magic.cpp */,
 				A29C88751C4DE42F00B7FEB3 /* Magic.hpp */,
-				A2B225C31C2D276F000083DF /* Monster.cpp */,
-				A2B225C41C2D276F000083DF /* Monster.hpp */,
 				A260C7291C31160500069D87 /* Brush.cpp */,
 				A260C72A1C31160500069D87 /* Brush.hpp */,
 				A20FD3D81C3E4DEA00938236 /* HUDLayer.cpp */,
@@ -487,6 +495,8 @@
 				A29C88781C4E3B4C00B7FEB3 /* MonsterDelegate.hpp */,
 				A29C887A1C4E429200B7FEB3 /* StoneDelegate.cpp */,
 				A29C887B1C4E429200B7FEB3 /* StoneDelegate.hpp */,
+				A2D8E0561C96A57800E73DFD /* magnetLayer.cpp */,
+				A2D8E0571C96A57800E73DFD /* magnetLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -529,6 +539,19 @@
 				9CFC2B1C1C2E95960080714D /* CCBlade.h */,
 			);
 			name = lib;
+			sourceTree = "<group>";
+		};
+		A20C0BC91C995BCD0080D0BC /* monster */ = {
+			isa = PBXGroup;
+			children = (
+				A2B225C31C2D276F000083DF /* Monster.cpp */,
+				A2B225C41C2D276F000083DF /* Monster.hpp */,
+				A20C0BC31C9952920080D0BC /* MonsterParam.cpp */,
+				A20C0BC41C9952920080D0BC /* MonsterParam.hpp */,
+				A20C0BC61C995A100080D0BC /* MonsterLogic.cpp */,
+				A20C0BC71C995A100080D0BC /* MonsterLogic.hpp */,
+			);
+			name = monster;
 			sourceTree = "<group>";
 		};
 		A29549E71C28EEBD000BB60D /* animation */ = {
@@ -640,7 +663,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 479CUL536Y;
+						DevelopmentTeam = V7KMG4CLYP;
 					};
 				};
 			};
@@ -794,6 +817,7 @@
 				A2DD09E31BEC92370048B722 /* Socket.cpp in Sources */,
 				A2954A461C292436000BB60D /* AppDelegate.cpp in Sources */,
 				A2DD09E61BEC92D80048B722 /* SocketTestScene.cpp in Sources */,
+				A20C0BC51C9952920080D0BC /* MonsterParam.cpp in Sources */,
 				9C3241D31C2AE2360053C075 /* OperationLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				A2954A401C28F28D000BB60D /* GameScene.cpp in Sources */,
@@ -805,6 +829,8 @@
 				A260C72B1C31160500069D87 /* Brush.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				9CFC2B1D1C2E95960080714D /* CCBlade.cpp in Sources */,
+				A20C0BC81C995A100080D0BC /* MonsterLogic.cpp in Sources */,
+				A2D8E0581C96A57800E73DFD /* magnetLayer.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -863,6 +889,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.mycompany.caracalClient-mobile";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos9.1;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -899,6 +926,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.mycompany.caracalClient-mobile";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos9.1;
 				TARGETED_DEVICE_FAMILY = 1;
