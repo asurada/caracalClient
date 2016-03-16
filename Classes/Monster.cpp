@@ -9,7 +9,15 @@
 #include "Monster.hpp"
 
 Monster* Monster::create(const std::string& name){
-    return (Monster*)super::create(name);
+    Monster* sprite = new Monster();
+    if(sprite->initWithFile(name)){
+        sprite->autorelease();
+        return sprite;
+    }
+    CC_SAFE_DELETE(sprite);
+    return nullptr;
+
+
 }
 
 
@@ -33,6 +41,10 @@ void Monster::defend(){
 
 void Monster::invokeMagic(){
     
+}
+
+std::vector<Stone*>  Monster::getStones(){
+    return stones;
 }
 
 Magic* Monster::judgeMagic(std::vector<int> magics){
@@ -62,15 +74,6 @@ void Monster::addStone(Stone* _stone){
     //stones.pushBack(_stone);
 }
 
-
-//void Monster::setStone(Vector<Stone> _stones){
-////    stones = _stones;
-////    stones.pushBack(_stones);
-////    if(stones.size() >0){
-////        stones.clear();
-////    }
-////    stones.pushBack(_stones);
-//}
 
 
 magic_type Monster::getMagicType(std::string magic){
@@ -205,14 +208,6 @@ magic_type Monster::getMagicType(std::string magic){
     
 }
 
-Monster::Monster(){
-  
-  // stones = std::make_shared<Vector<Stone*>>();
-   // magics = std::make_shared<Vector<Magic*>>();
-    //stones = *new Vector<Stone*>();
-}
+Monster::Monster(){}
 
-Monster::~Monster(){
-
-    
-}
+Monster::~Monster(){}

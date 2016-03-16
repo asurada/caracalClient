@@ -34,10 +34,10 @@ enum magic_type
     C14,
 };
 
-class Monster :public cocos2d::Sprite,StoneDelegate{
+class Monster : public cocos2d::Sprite
+{
 private:
     typedef Sprite super;
-
     Magic* currentMagic;
     Monster* enemy;
     
@@ -46,29 +46,24 @@ private:
     int strengthValue;   //physicsSkill
     int defenseValue;    //defense
     int revolutionValue; //revolution
+    std::vector<Stone*>  stones;
     MonsterDelegate* monsterDelegate;
     magic_type getMagicType(std::string magic);
     
 public:
-    //virtual void init(const char *pName) =0;
+    Monster();
+    ~Monster();
     static Monster* create(const std::string& name);
     void invokeMagic();
-    void revolve();
     void attack();
     void defend();
     void addStone(Stone* _stones);
     void setDelegate(MonsterDelegate*  delegate);
     int updateHp(int value);
-  //  void setStone(Vector<Stone> _stones);
     Magic* judgeMagic(std::vector<int> magics);
-//    Vector<Stone*> stones;
-//    Vector<Magic*> magics;
-    
-    std::vector<Stone*>  stones;/// = std::make_shared<Vector<Sprite*>>();  //default constructor
-    //std::shared_ptr<Vector<Magic*>>  magics;
-    
-    Monster();
-    ~Monster();
-    
+
+    std::vector<Stone*> getStones();
+ 
 };
+
 #endif /* Monster_hpp */
