@@ -21,9 +21,8 @@ class Monster : public cocos2d::Sprite
 {
 private:
     typedef Sprite super;
-    Magic* currentMagic;
-   //Monster* enemy;
     
+    Magic* currentMagic;
     MonsterParam* param;
     MonsterLogic* logic;
     std::vector<Stone*>  stones;
@@ -34,8 +33,6 @@ public:
     ~Monster();
     static Monster* create(const std::string& name);
     void initOpition();
-    
-    
     
     void addStone(Stone* _stones);
     void invokeMagic();
