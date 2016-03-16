@@ -12,54 +12,39 @@
 #include "Stone.hpp"
 #include "Magic.hpp"
 #include "MonsterDelegate.hpp"
+#include "MonsterParam.hpp"
+#include "MonsterLogic.hpp"
 
 USING_NS_CC;
-
-enum magic_type
-{
-    C0 = 0,
-    C1 = 1,
-    C2 = 2,
-    C3 = 3,
-    C4 = 4,
-    C5 = 5,
-    C6 = 6,
-    C7 = 7,
-    C8 = 8,
-    C9 = 9,
-    C10,
-    C11,
-    C12,
-    C13,
-    C14,
-};
 
 class Monster : public cocos2d::Sprite
 {
 private:
     typedef Sprite super;
     Magic* currentMagic;
-    Monster* enemy;
+   //Monster* enemy;
     
-    int hpValue;
-    int magicValue;      //magicSkill
-    int strengthValue;   //physicsSkill
-    int defenseValue;    //defense
-    int revolutionValue; //revolution
+    MonsterParam* param;
+    MonsterLogic* logic;
     std::vector<Stone*>  stones;
     MonsterDelegate* monsterDelegate;
-    magic_type getMagicType(std::string magic);
     
 public:
     Monster();
     ~Monster();
     static Monster* create(const std::string& name);
+    void initOpition();
+    
+    
+    
+    void addStone(Stone* _stones);
     void invokeMagic();
     void attack();
     void defend();
-    void addStone(Stone* _stones);
+    
+    MonsterParam* getParam();
+    
     void setDelegate(MonsterDelegate*  delegate);
-    int updateHp(int value);
     Magic* judgeMagic(std::vector<int> magics);
 
     std::vector<Stone*> getStones();

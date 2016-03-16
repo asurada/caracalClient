@@ -169,19 +169,19 @@ void OperationLayer::initOptions()
     stoneObject->setTag(3);
     monsterObject->addStone(stoneObject);
   
-//
+
     stoneObject  = Stone::create("bll_02.png");
     stoneObject->setPosition(Point(230,148));
     this->addChild(stoneObject);
     stoneObject->setTag(4);
     monsterObject->addStone(stoneObject);
-//    
+
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(230,40));
     this->addChild(stoneObject);
     stoneObject->setTag(2);
     monsterObject->addStone(stoneObject);
-//
+
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(170,94));
     this->addChild(stoneObject);
@@ -193,22 +193,20 @@ void OperationLayer::initOptions()
     this->addChild(stoneObject);
     stoneObject->setTag(5);
     monsterObject->addStone(stoneObject);
-//    stones.pushBack(stoneObject);
+
     
     stoneObject  =  Stone::create("bll_02.png");
     stoneObject->setPosition(Point(290,100));
     this->addChild(stoneObject);
     stoneObject->setTag(6);
     monsterObject->addStone(stoneObject);
-//    stones.pushBack(stoneObject);
     
-    //monsterObject->setStone(stones);
     
-//    monsterObject->setPosition(Point(230,94));
-//    this->addChild(monsterObject);
-//    
+    monsterObject->setPosition(Point(230,94));
+    this->addChild(monsterObject);
+  
     
-    // do things here like setTag(), setPosition(), any custom logic.
+// do things here like setTag(), setPosition(), any custom logic.
 }
 
 
