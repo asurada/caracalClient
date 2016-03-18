@@ -188,18 +188,18 @@ void OperationLayer::initOptions()
     stoneObject->setTag(1);
     monsterObject->addStone(stoneObject);
     
-    stoneObject  =  Stone::create("bll_02.png");
-    stoneObject->setPosition(Point(309,94));
-    this->addChild(stoneObject);
-    stoneObject->setTag(5);
-    monsterObject->addStone(stoneObject);
-
-    
-    stoneObject  =  Stone::create("bll_02.png");
-    stoneObject->setPosition(Point(290,100));
-    this->addChild(stoneObject);
-    stoneObject->setTag(6);
-    monsterObject->addStone(stoneObject);
+//    stoneObject  =  Stone::create("bll_02.png");
+//    stoneObject->setPosition(Point(309,94));
+//    this->addChild(stoneObject);
+//    stoneObject->setTag(5);
+//    monsterObject->addStone(stoneObject);
+//
+//    
+//    stoneObject  =  Stone::create("bll_02.png");
+//    stoneObject->setPosition(Point(290,100));
+//    this->addChild(stoneObject);
+//    stoneObject->setTag(6);
+//    monsterObject->addStone(stoneObject);
     
     
     monsterObject->setPosition(Point(230,94));

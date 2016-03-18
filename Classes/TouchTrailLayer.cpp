@@ -258,7 +258,7 @@ bool TouchTrailLayer::isCloseShape(Point point){
 
 
 void TouchTrailLayer::autoDrawPoints(float frame){
-    CCLOG("_point.size :%d",(int)_points.size());
+    //CCLOG("_point.size :%d",(int)_points.size());
     if(_points.size() > 1){
         Point point = _points.back();
         blade->push(point);
