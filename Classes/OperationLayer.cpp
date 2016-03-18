@@ -121,7 +121,7 @@ OperationLayer* OperationLayer::create()
     {
         pSprite->autorelease();
         pSprite->initOptions();
-//      pSprite->addEvents();
+        pSprite->addEvents();
         return pSprite;
     }
     
@@ -296,11 +296,11 @@ void OperationLayer::addEvents()
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 30);
     
     
-//    auto listen2 = cocos2d::EventListenerTouchAllAtOnce::create();
-//    listen2->onTouchesBegan = CC_CALLBACK_2(TouchTrailLayer::onTouchesBegan,_touchTrailLayer);
-//    listen2->onTouchesMoved = CC_CALLBACK_2(TouchTrailLayer::onTouchesMoved,_touchTrailLayer);
-//    listen2->onTouchesEnded = CC_CALLBACK_2(TouchTrailLayer::onTouchesEnded,_touchTrailLayer);
-//    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listen2, _touchTrailLayer);
+    auto listen2 = cocos2d::EventListenerTouchAllAtOnce::create();
+    listen2->onTouchesBegan = CC_CALLBACK_2(TouchTrailLayer::onTouchesBegan,_touchTrailLayer);
+    listen2->onTouchesMoved = CC_CALLBACK_2(TouchTrailLayer::onTouchesMoved,_touchTrailLayer);
+    listen2->onTouchesEnded = CC_CALLBACK_2(TouchTrailLayer::onTouchesEnded,_touchTrailLayer);
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listen2, _touchTrailLayer);
 }
 
 

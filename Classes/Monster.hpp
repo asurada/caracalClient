@@ -34,7 +34,7 @@ public:
     static Monster* create(const std::string& name);
     void initOpition();
     
-    void addStone(Stone* _stones);
+  
     void invokeMagic();
     void attack();
     void defend();
@@ -43,7 +43,8 @@ public:
     
     void setDelegate(MonsterDelegate*  delegate);
     Magic* judgeMagic(std::vector<int> magics);
-
+ 
+    void addStone(Stone* _stones);
     std::vector<Stone*> getStones();
  
 };
