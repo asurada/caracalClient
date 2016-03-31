@@ -212,7 +212,7 @@
 		9C3241D11C2AE2360053C075 /* OperationLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OperationLayer.cpp; sourceTree = "<group>"; };
 		9C3241D21C2AE2360053C075 /* OperationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperationLayer.h; sourceTree = "<group>"; };
 		9CFC2B161C2E8AEE0080714D /* myFont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = myFont.fnt; sourceTree = "<group>"; };
-		9CFC2B181C2E8C910080714D /* myFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myFont.png; sourceTree = "<group>"; };
+		9CFC2B181C2E8C910080714D /* myFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = myFont.png; path = ../Resources/myFont.png; sourceTree = "<group>"; };
 		9CFC2B1B1C2E95960080714D /* CCBlade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCBlade.cpp; sourceTree = "<group>"; };
 		9CFC2B1C1C2E95960080714D /* CCBlade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBlade.h; sourceTree = "<group>"; };
 		9CFC2B1E1C2E97070080714D /* TouchTrailLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchTrailLayer.cpp; sourceTree = "<group>"; };
@@ -426,7 +426,6 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9CFC2B181C2E8C910080714D /* myFont.png */,
 				9CFC2B161C2E8AEE0080714D /* myFont.fnt */,
 				A29549E71C28EEBD000BB60D /* animation */,
 				A29549EC1C28EEBD000BB60D /* attack_1.plist */,
@@ -496,6 +495,7 @@
 				A29C887A1C4E429200B7FEB3 /* StoneDelegate.cpp */,
 				A29C887B1C4E429200B7FEB3 /* StoneDelegate.hpp */,
 				A2D8E0561C96A57800E73DFD /* magnetLayer.cpp */,
+				9CFC2B181C2E8C910080714D /* myFont.png */,
 				A2D8E0571C96A57800E73DFD /* magnetLayer.hpp */,
 			);
 			name = Classes;
